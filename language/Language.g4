@@ -6,10 +6,10 @@ fragment CHARACTER: [a-zA-Z];
 INT_LITERAL: [1-9][0-9]* | '0';
 FLOAT_LITERAL: [0-9]+ '.' [0-9]+;
 BOOL_LITERAL: 'true' | 'false';
-WS: [ \t\r\n]+ -> skip;      // skip spaces, tabs, and newlines
 SINGLE_LINE_COMMENT: '//' ~[\r\n]* -> skip;
 STRING_LITERAL: '"' (~["\\\r\n])* '"';
 IDENTIFIER: CHARACTER (CHARACTER | [0-9])*;
+WS: [ \t\r\n]+ -> skip;      // skip spaces, tabs, and newlines
 
 MUL : '*' ;
 DIV : '/' ;
@@ -61,4 +61,8 @@ expression: prefix='-' expression
 assignment: <assoc=right> IDENTIFIER '=' expression;
 type_keyword: 'int' | 'float' | 'bool' | 'string';
 
-literal: FLOAT_LITERAL | INT_LITERAL | BOOL_LITERAL | STRING_LITERAL;
+literal: INT_LITERAL # int
+       | FLOAT_LITERAL # float
+       | BOOL_LITERAL # bool
+       | STRING_LITERAL # string
+       ;

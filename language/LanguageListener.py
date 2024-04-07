@@ -107,12 +107,39 @@ class LanguageListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by LanguageParser#literal.
-    def enterLiteral(self, ctx:LanguageParser.LiteralContext):
+    # Enter a parse tree produced by LanguageParser#int.
+    def enterInt(self, ctx:LanguageParser.IntContext):
         pass
 
-    # Exit a parse tree produced by LanguageParser#literal.
-    def exitLiteral(self, ctx:LanguageParser.LiteralContext):
+    # Exit a parse tree produced by LanguageParser#int.
+    def exitInt(self, ctx:LanguageParser.IntContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#float.
+    def enterFloat(self, ctx:LanguageParser.FloatContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#float.
+    def exitFloat(self, ctx:LanguageParser.FloatContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#bool.
+    def enterBool(self, ctx:LanguageParser.BoolContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#bool.
+    def exitBool(self, ctx:LanguageParser.BoolContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#string.
+    def enterString(self, ctx:LanguageParser.StringContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#string.
+    def exitString(self, ctx:LanguageParser.StringContext):
         pass
 
 

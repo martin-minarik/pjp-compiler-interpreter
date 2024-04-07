@@ -10,7 +10,7 @@ else:
 
 def serializedATN():
     return [
-        4,1,36,147,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,36,151,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,1,0,4,0,26,8,0,11,
         0,12,0,27,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,
         1,43,8,1,1,2,1,2,1,2,1,2,5,2,49,8,2,10,2,12,2,52,9,2,1,2,1,2,1,3,
@@ -20,46 +20,48 @@ def serializedATN():
         7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,3,
         8,114,8,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,
         8,1,8,1,8,1,8,1,8,5,8,134,8,8,10,8,12,8,137,9,8,1,9,1,9,1,9,1,9,
-        1,10,1,10,1,11,1,11,1,11,0,1,16,12,0,2,4,6,8,10,12,14,16,18,20,22,
-        0,6,2,0,31,32,35,35,2,0,33,34,36,36,1,0,13,14,1,0,15,16,1,0,20,23,
-        2,0,24,26,29,29,159,0,25,1,0,0,0,2,42,1,0,0,0,4,44,1,0,0,0,6,55,
-        1,0,0,0,8,66,1,0,0,0,10,77,1,0,0,0,12,86,1,0,0,0,14,95,1,0,0,0,16,
-        113,1,0,0,0,18,138,1,0,0,0,20,142,1,0,0,0,22,144,1,0,0,0,24,26,3,
-        2,1,0,25,24,1,0,0,0,26,27,1,0,0,0,27,25,1,0,0,0,27,28,1,0,0,0,28,
-        29,1,0,0,0,29,30,5,0,0,1,30,1,1,0,0,0,31,43,5,1,0,0,32,43,3,4,2,
-        0,33,34,3,16,8,0,34,35,5,1,0,0,35,43,1,0,0,0,36,43,3,6,3,0,37,43,
-        3,8,4,0,38,43,3,10,5,0,39,43,3,12,6,0,40,43,3,14,7,0,41,43,5,28,
-        0,0,42,31,1,0,0,0,42,32,1,0,0,0,42,33,1,0,0,0,42,36,1,0,0,0,42,37,
-        1,0,0,0,42,38,1,0,0,0,42,39,1,0,0,0,42,40,1,0,0,0,42,41,1,0,0,0,
-        43,3,1,0,0,0,44,45,3,20,10,0,45,50,5,30,0,0,46,47,5,2,0,0,47,49,
-        5,30,0,0,48,46,1,0,0,0,49,52,1,0,0,0,50,48,1,0,0,0,50,51,1,0,0,0,
-        51,53,1,0,0,0,52,50,1,0,0,0,53,54,5,1,0,0,54,5,1,0,0,0,55,56,5,3,
-        0,0,56,61,5,30,0,0,57,58,5,2,0,0,58,60,5,30,0,0,59,57,1,0,0,0,60,
-        63,1,0,0,0,61,59,1,0,0,0,61,62,1,0,0,0,62,64,1,0,0,0,63,61,1,0,0,
-        0,64,65,5,1,0,0,65,7,1,0,0,0,66,67,5,4,0,0,67,72,3,16,8,0,68,69,
-        5,2,0,0,69,71,3,16,8,0,70,68,1,0,0,0,71,74,1,0,0,0,72,70,1,0,0,0,
-        72,73,1,0,0,0,73,75,1,0,0,0,74,72,1,0,0,0,75,76,5,1,0,0,76,9,1,0,
-        0,0,77,81,5,5,0,0,78,80,3,2,1,0,79,78,1,0,0,0,80,83,1,0,0,0,81,79,
-        1,0,0,0,81,82,1,0,0,0,82,84,1,0,0,0,83,81,1,0,0,0,84,85,5,6,0,0,
-        85,11,1,0,0,0,86,87,5,7,0,0,87,88,5,8,0,0,88,89,3,16,8,0,89,90,5,
-        9,0,0,90,93,3,2,1,0,91,92,5,10,0,0,92,94,3,2,1,0,93,91,1,0,0,0,93,
-        94,1,0,0,0,94,13,1,0,0,0,95,96,5,11,0,0,96,97,5,8,0,0,97,98,3,16,
-        8,0,98,99,5,9,0,0,99,100,3,2,1,0,100,15,1,0,0,0,101,102,6,8,-1,0,
-        102,103,5,34,0,0,103,114,3,16,8,12,104,105,5,12,0,0,105,114,3,16,
-        8,11,106,107,5,8,0,0,107,108,3,16,8,0,108,109,5,9,0,0,109,114,1,
-        0,0,0,110,114,3,18,9,0,111,114,5,30,0,0,112,114,3,22,11,0,113,101,
-        1,0,0,0,113,104,1,0,0,0,113,106,1,0,0,0,113,110,1,0,0,0,113,111,
-        1,0,0,0,113,112,1,0,0,0,114,135,1,0,0,0,115,116,10,10,0,0,116,117,
-        7,0,0,0,117,134,3,16,8,11,118,119,10,9,0,0,119,120,7,1,0,0,120,134,
-        3,16,8,10,121,122,10,8,0,0,122,123,7,2,0,0,123,134,3,16,8,9,124,
-        125,10,7,0,0,125,126,7,3,0,0,126,134,3,16,8,8,127,128,10,6,0,0,128,
-        129,5,17,0,0,129,134,3,16,8,7,130,131,10,5,0,0,131,132,5,18,0,0,
-        132,134,3,16,8,6,133,115,1,0,0,0,133,118,1,0,0,0,133,121,1,0,0,0,
-        133,124,1,0,0,0,133,127,1,0,0,0,133,130,1,0,0,0,134,137,1,0,0,0,
-        135,133,1,0,0,0,135,136,1,0,0,0,136,17,1,0,0,0,137,135,1,0,0,0,138,
-        139,5,30,0,0,139,140,5,19,0,0,140,141,3,16,8,0,141,19,1,0,0,0,142,
-        143,7,4,0,0,143,21,1,0,0,0,144,145,7,5,0,0,145,23,1,0,0,0,10,27,
-        42,50,61,72,81,93,113,133,135
+        1,10,1,10,1,11,1,11,1,11,1,11,3,11,149,8,11,1,11,0,1,16,12,0,2,4,
+        6,8,10,12,14,16,18,20,22,0,5,2,0,31,32,35,35,2,0,33,34,36,36,1,0,
+        13,14,1,0,15,16,1,0,20,23,166,0,25,1,0,0,0,2,42,1,0,0,0,4,44,1,0,
+        0,0,6,55,1,0,0,0,8,66,1,0,0,0,10,77,1,0,0,0,12,86,1,0,0,0,14,95,
+        1,0,0,0,16,113,1,0,0,0,18,138,1,0,0,0,20,142,1,0,0,0,22,148,1,0,
+        0,0,24,26,3,2,1,0,25,24,1,0,0,0,26,27,1,0,0,0,27,25,1,0,0,0,27,28,
+        1,0,0,0,28,29,1,0,0,0,29,30,5,0,0,1,30,1,1,0,0,0,31,43,5,1,0,0,32,
+        43,3,4,2,0,33,34,3,16,8,0,34,35,5,1,0,0,35,43,1,0,0,0,36,43,3,6,
+        3,0,37,43,3,8,4,0,38,43,3,10,5,0,39,43,3,12,6,0,40,43,3,14,7,0,41,
+        43,5,27,0,0,42,31,1,0,0,0,42,32,1,0,0,0,42,33,1,0,0,0,42,36,1,0,
+        0,0,42,37,1,0,0,0,42,38,1,0,0,0,42,39,1,0,0,0,42,40,1,0,0,0,42,41,
+        1,0,0,0,43,3,1,0,0,0,44,45,3,20,10,0,45,50,5,29,0,0,46,47,5,2,0,
+        0,47,49,5,29,0,0,48,46,1,0,0,0,49,52,1,0,0,0,50,48,1,0,0,0,50,51,
+        1,0,0,0,51,53,1,0,0,0,52,50,1,0,0,0,53,54,5,1,0,0,54,5,1,0,0,0,55,
+        56,5,3,0,0,56,61,5,29,0,0,57,58,5,2,0,0,58,60,5,29,0,0,59,57,1,0,
+        0,0,60,63,1,0,0,0,61,59,1,0,0,0,61,62,1,0,0,0,62,64,1,0,0,0,63,61,
+        1,0,0,0,64,65,5,1,0,0,65,7,1,0,0,0,66,67,5,4,0,0,67,72,3,16,8,0,
+        68,69,5,2,0,0,69,71,3,16,8,0,70,68,1,0,0,0,71,74,1,0,0,0,72,70,1,
+        0,0,0,72,73,1,0,0,0,73,75,1,0,0,0,74,72,1,0,0,0,75,76,5,1,0,0,76,
+        9,1,0,0,0,77,81,5,5,0,0,78,80,3,2,1,0,79,78,1,0,0,0,80,83,1,0,0,
+        0,81,79,1,0,0,0,81,82,1,0,0,0,82,84,1,0,0,0,83,81,1,0,0,0,84,85,
+        5,6,0,0,85,11,1,0,0,0,86,87,5,7,0,0,87,88,5,8,0,0,88,89,3,16,8,0,
+        89,90,5,9,0,0,90,93,3,2,1,0,91,92,5,10,0,0,92,94,3,2,1,0,93,91,1,
+        0,0,0,93,94,1,0,0,0,94,13,1,0,0,0,95,96,5,11,0,0,96,97,5,8,0,0,97,
+        98,3,16,8,0,98,99,5,9,0,0,99,100,3,2,1,0,100,15,1,0,0,0,101,102,
+        6,8,-1,0,102,103,5,34,0,0,103,114,3,16,8,12,104,105,5,12,0,0,105,
+        114,3,16,8,11,106,107,5,8,0,0,107,108,3,16,8,0,108,109,5,9,0,0,109,
+        114,1,0,0,0,110,114,3,18,9,0,111,114,5,29,0,0,112,114,3,22,11,0,
+        113,101,1,0,0,0,113,104,1,0,0,0,113,106,1,0,0,0,113,110,1,0,0,0,
+        113,111,1,0,0,0,113,112,1,0,0,0,114,135,1,0,0,0,115,116,10,10,0,
+        0,116,117,7,0,0,0,117,134,3,16,8,11,118,119,10,9,0,0,119,120,7,1,
+        0,0,120,134,3,16,8,10,121,122,10,8,0,0,122,123,7,2,0,0,123,134,3,
+        16,8,9,124,125,10,7,0,0,125,126,7,3,0,0,126,134,3,16,8,8,127,128,
+        10,6,0,0,128,129,5,17,0,0,129,134,3,16,8,7,130,131,10,5,0,0,131,
+        132,5,18,0,0,132,134,3,16,8,6,133,115,1,0,0,0,133,118,1,0,0,0,133,
+        121,1,0,0,0,133,124,1,0,0,0,133,127,1,0,0,0,133,130,1,0,0,0,134,
+        137,1,0,0,0,135,133,1,0,0,0,135,136,1,0,0,0,136,17,1,0,0,0,137,135,
+        1,0,0,0,138,139,5,29,0,0,139,140,5,19,0,0,140,141,3,16,8,0,141,19,
+        1,0,0,0,142,143,7,4,0,0,143,21,1,0,0,0,144,149,5,24,0,0,145,149,
+        5,25,0,0,146,149,5,26,0,0,147,149,5,28,0,0,148,144,1,0,0,0,148,145,
+        1,0,0,0,148,146,1,0,0,0,148,147,1,0,0,0,149,23,1,0,0,0,11,27,42,
+        50,61,72,81,93,113,133,135,148
     ]
 
 class LanguageParser ( Parser ):
@@ -86,9 +88,9 @@ class LanguageParser ( Parser ):
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "INT_LITERAL", "FLOAT_LITERAL", "BOOL_LITERAL", "WS", 
-                      "SINGLE_LINE_COMMENT", "STRING_LITERAL", "IDENTIFIER", 
-                      "MUL", "DIV", "ADD", "SUB", "MOD", "CONCAT" ]
+                      "INT_LITERAL", "FLOAT_LITERAL", "BOOL_LITERAL", "SINGLE_LINE_COMMENT", 
+                      "STRING_LITERAL", "IDENTIFIER", "WS", "MUL", "DIV", 
+                      "ADD", "SUB", "MOD", "CONCAT" ]
 
     RULE_program = 0
     RULE_statement = 1
@@ -134,10 +136,10 @@ class LanguageParser ( Parser ):
     INT_LITERAL=24
     FLOAT_LITERAL=25
     BOOL_LITERAL=26
-    WS=27
-    SINGLE_LINE_COMMENT=28
-    STRING_LITERAL=29
-    IDENTIFIER=30
+    SINGLE_LINE_COMMENT=27
+    STRING_LITERAL=28
+    IDENTIFIER=29
+    WS=30
     MUL=31
     DIV=32
     ADD=33
@@ -207,7 +209,7 @@ class LanguageParser ( Parser ):
                 self.state = 27 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 19192093114) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 18252569018) != 0)):
                     break
 
             self.state = 29
@@ -297,7 +299,7 @@ class LanguageParser ( Parser ):
                 self.state = 32
                 self.declaration()
                 pass
-            elif token in [8, 12, 24, 25, 26, 29, 30, 34]:
+            elif token in [8, 12, 24, 25, 26, 28, 29, 34]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 33
                 self.expression(0)
@@ -329,7 +331,7 @@ class LanguageParser ( Parser ):
                 self.state = 40
                 self.while_loop()
                 pass
-            elif token in [28]:
+            elif token in [27]:
                 self.enterOuterAlt(localctx, 9)
                 self.state = 41
                 self.match(LanguageParser.SINGLE_LINE_COMMENT)
@@ -598,7 +600,7 @@ class LanguageParser ( Parser ):
             self.state = 81
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 19192093114) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 18252569018) != 0):
                 self.state = 78
                 self.statement()
                 self.state = 83
@@ -1106,35 +1108,110 @@ class LanguageParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def FLOAT_LITERAL(self):
-            return self.getToken(LanguageParser.FLOAT_LITERAL, 0)
-
-        def INT_LITERAL(self):
-            return self.getToken(LanguageParser.INT_LITERAL, 0)
-
-        def BOOL_LITERAL(self):
-            return self.getToken(LanguageParser.BOOL_LITERAL, 0)
-
-        def STRING_LITERAL(self):
-            return self.getToken(LanguageParser.STRING_LITERAL, 0)
 
         def getRuleIndex(self):
             return LanguageParser.RULE_literal
 
+     
+        def copyFrom(self, ctx:ParserRuleContext):
+            super().copyFrom(ctx)
+
+
+
+    class BoolContext(LiteralContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a LanguageParser.LiteralContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def BOOL_LITERAL(self):
+            return self.getToken(LanguageParser.BOOL_LITERAL, 0)
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLiteral" ):
-                listener.enterLiteral(self)
+            if hasattr( listener, "enterBool" ):
+                listener.enterBool(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLiteral" ):
-                listener.exitLiteral(self)
+            if hasattr( listener, "exitBool" ):
+                listener.exitBool(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLiteral" ):
-                return visitor.visitLiteral(self)
+            if hasattr( visitor, "visitBool" ):
+                return visitor.visitBool(self)
             else:
                 return visitor.visitChildren(self)
 
+
+    class StringContext(LiteralContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a LanguageParser.LiteralContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def STRING_LITERAL(self):
+            return self.getToken(LanguageParser.STRING_LITERAL, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterString" ):
+                listener.enterString(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitString" ):
+                listener.exitString(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitString" ):
+                return visitor.visitString(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class FloatContext(LiteralContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a LanguageParser.LiteralContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def FLOAT_LITERAL(self):
+            return self.getToken(LanguageParser.FLOAT_LITERAL, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFloat" ):
+                listener.enterFloat(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFloat" ):
+                listener.exitFloat(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFloat" ):
+                return visitor.visitFloat(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class IntContext(LiteralContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a LanguageParser.LiteralContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def INT_LITERAL(self):
+            return self.getToken(LanguageParser.INT_LITERAL, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInt" ):
+                listener.enterInt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInt" ):
+                listener.exitInt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInt" ):
+                return visitor.visitInt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1142,16 +1219,37 @@ class LanguageParser ( Parser ):
 
         localctx = LanguageParser.LiteralContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_literal)
-        self._la = 0 # Token type
         try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 144
-            _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 654311424) != 0)):
-                self._errHandler.recoverInline(self)
+            self.state = 148
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [24]:
+                localctx = LanguageParser.IntContext(self, localctx)
+                self.enterOuterAlt(localctx, 1)
+                self.state = 144
+                self.match(LanguageParser.INT_LITERAL)
+                pass
+            elif token in [25]:
+                localctx = LanguageParser.FloatContext(self, localctx)
+                self.enterOuterAlt(localctx, 2)
+                self.state = 145
+                self.match(LanguageParser.FLOAT_LITERAL)
+                pass
+            elif token in [26]:
+                localctx = LanguageParser.BoolContext(self, localctx)
+                self.enterOuterAlt(localctx, 3)
+                self.state = 146
+                self.match(LanguageParser.BOOL_LITERAL)
+                pass
+            elif token in [28]:
+                localctx = LanguageParser.StringContext(self, localctx)
+                self.enterOuterAlt(localctx, 4)
+                self.state = 147
+                self.match(LanguageParser.STRING_LITERAL)
+                pass
             else:
-                self._errHandler.reportMatch(self)
-                self.consume()
+                raise NoViableAltException(self)
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
