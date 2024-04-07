@@ -1,11 +1,10 @@
 import sys
-from pprint import pprint
 
 from antlr4 import *
 from antlr4.tree.Trees import Trees
 
-from LanguageLexer import LanguageLexer
-from LanguageParser import LanguageParser
+from language.LanguageLexer import LanguageLexer
+from language.LanguageParser import LanguageParser
 from stop_parsing_error_listener import StopParsingListener
 from verbose_error_listener import VerboseErrorListener
 
