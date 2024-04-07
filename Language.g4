@@ -56,10 +56,9 @@ expression: prefix='-' expression
           | expression op='||' expression
           | '(' expression ')'
           | assignment
-          | literal
-          | identifier;
+          | IDENTIFIER
+          | literal;
 
-identifier: IDENTIFIER;
 assignment: IDENTIFIER '=' expression;
 
 literal: FLOAT_LITERAL | INT_LITERAL | BOOL_LITERAL | STRING_LITERAL;

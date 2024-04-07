@@ -89,15 +89,6 @@ class LanguageListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by LanguageParser#identifier.
-    def enterIdentifier(self, ctx:LanguageParser.IdentifierContext):
-        pass
-
-    # Exit a parse tree produced by LanguageParser#identifier.
-    def exitIdentifier(self, ctx:LanguageParser.IdentifierContext):
-        pass
-
-
     # Enter a parse tree produced by LanguageParser#assignment.
     def enterAssignment(self, ctx:LanguageParser.AssignmentContext):
         pass

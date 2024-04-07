@@ -54,11 +54,6 @@ class LanguageVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by LanguageParser#identifier.
-    def visitIdentifier(self, ctx:LanguageParser.IdentifierContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by LanguageParser#assignment.
     def visitAssignment(self, ctx:LanguageParser.AssignmentContext):
         return self.visitChildren(ctx)
