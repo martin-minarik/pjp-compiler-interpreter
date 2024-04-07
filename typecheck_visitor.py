@@ -1,11 +1,13 @@
-from language.LanguageVisitor import LanguageVisitor
-from language.LanguageParser import LanguageParser
-from symbol_table import SymbolTable
-from type_enum import Type
+from typing import Any
+
 from antlr4.Token import *
 from antlr4.tree.Tree import TerminalNodeImpl
-from typing import Any
+
 from errors import Errors
+from language.LanguageParser import LanguageParser
+from language.LanguageVisitor import LanguageVisitor
+from symbol_table import SymbolTable
+from type_enum import Type
 
 
 class TypeCheckingVisitor(LanguageVisitor):
@@ -14,13 +16,13 @@ class TypeCheckingVisitor(LanguageVisitor):
 
     def visitType_keyword(self, ctx: LanguageParser.Type_keywordContext):
         match ctx.getText():
-            case 'float':
+            case "float":
                 return Type.Float
-            case 'int':
+            case "int":
                 return Type.Int
-            case 'string':
+            case "string":
                 return Type.String
-            case 'bool':
+            case "bool":
                 return Type.Bool
 
     def visitInt(self, ctx: LanguageParser.IntContext):
@@ -39,7 +41,9 @@ class TypeCheckingVisitor(LanguageVisitor):
         type_ = self.visit(ctx.type_keyword())
         for identifier in ctx.IDENTIFIER():
             identifier: TerminalNodeImpl
-            self.symbol_table.add(identifier.symbol, type_)  # Assuming add method takes IToken and Type
+            self.symbol_table.add(
+                identifier.symbol, type_
+            )  # Assuming add method takes IToken and Type
         return Type.Error, 0
 
     def visitAssignment(self, ctx: LanguageParser.AssignmentContext):
@@ -50,8 +54,10 @@ class TypeCheckingVisitor(LanguageVisitor):
             return Type.Error, 0
 
         if (variable[0] == Type.Int) and (right[0] == Type.Float):
-            Errors.report_error(ctx.IDENTIFIER().symbol,
-                                f"Variable '{ctx.IDENTIFIER().getText()}' type is int, but the assigned value is float.")
+            Errors.report_error(
+                ctx.IDENTIFIER().symbol,
+                f"Variable '{ctx.IDENTIFIER().getText()}' type is int, but the assigned value is float.",
+            )
             return Type.Error, 0
 
         if (variable[0] == Type.Float) and (right[0] == Type.Int):

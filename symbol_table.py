@@ -1,7 +1,9 @@
-from type_enum import Type
-from errors import Errors
 from typing import Any
+
 from antlr4.Token import Token
+
+from errors import Errors
+from type_enum import Type
 
 
 class SymbolTable:
