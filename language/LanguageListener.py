@@ -80,12 +80,39 @@ class LanguageListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by LanguageParser#expression.
-    def enterExpression(self, ctx:LanguageParser.ExpressionContext):
+    # Enter a parse tree produced by LanguageParser#mulDivMod.
+    def enterMulDivMod(self, ctx:LanguageParser.MulDivModContext):
         pass
 
-    # Exit a parse tree produced by LanguageParser#expression.
-    def exitExpression(self, ctx:LanguageParser.ExpressionContext):
+    # Exit a parse tree produced by LanguageParser#mulDivMod.
+    def exitMulDivMod(self, ctx:LanguageParser.MulDivModContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#logicalNot.
+    def enterLogicalNot(self, ctx:LanguageParser.LogicalNotContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#logicalNot.
+    def exitLogicalNot(self, ctx:LanguageParser.LogicalNotContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#equalNotEqual.
+    def enterEqualNotEqual(self, ctx:LanguageParser.EqualNotEqualContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#equalNotEqual.
+    def exitEqualNotEqual(self, ctx:LanguageParser.EqualNotEqualContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#addSubConcat.
+    def enterAddSubConcat(self, ctx:LanguageParser.AddSubConcatContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#addSubConcat.
+    def exitAddSubConcat(self, ctx:LanguageParser.AddSubConcatContext):
         pass
 
 
@@ -98,48 +125,102 @@ class LanguageListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LanguageParser#intLiteral.
+    def enterIntLiteral(self, ctx:LanguageParser.IntLiteralContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#intLiteral.
+    def exitIntLiteral(self, ctx:LanguageParser.IntLiteralContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#parantheses.
+    def enterParantheses(self, ctx:LanguageParser.ParanthesesContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#parantheses.
+    def exitParantheses(self, ctx:LanguageParser.ParanthesesContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#lesserGreater.
+    def enterLesserGreater(self, ctx:LanguageParser.LesserGreaterContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#lesserGreater.
+    def exitLesserGreater(self, ctx:LanguageParser.LesserGreaterContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#logicalAnd.
+    def enterLogicalAnd(self, ctx:LanguageParser.LogicalAndContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#logicalAnd.
+    def exitLogicalAnd(self, ctx:LanguageParser.LogicalAndContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#boolLiteral.
+    def enterBoolLiteral(self, ctx:LanguageParser.BoolLiteralContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#boolLiteral.
+    def exitBoolLiteral(self, ctx:LanguageParser.BoolLiteralContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#stringLiteral.
+    def enterStringLiteral(self, ctx:LanguageParser.StringLiteralContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#stringLiteral.
+    def exitStringLiteral(self, ctx:LanguageParser.StringLiteralContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#unaryMinus.
+    def enterUnaryMinus(self, ctx:LanguageParser.UnaryMinusContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#unaryMinus.
+    def exitUnaryMinus(self, ctx:LanguageParser.UnaryMinusContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#floatLiteral.
+    def enterFloatLiteral(self, ctx:LanguageParser.FloatLiteralContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#floatLiteral.
+    def exitFloatLiteral(self, ctx:LanguageParser.FloatLiteralContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#id.
+    def enterId(self, ctx:LanguageParser.IdContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#id.
+    def exitId(self, ctx:LanguageParser.IdContext):
+        pass
+
+
+    # Enter a parse tree produced by LanguageParser#logicalOr.
+    def enterLogicalOr(self, ctx:LanguageParser.LogicalOrContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#logicalOr.
+    def exitLogicalOr(self, ctx:LanguageParser.LogicalOrContext):
+        pass
+
+
     # Enter a parse tree produced by LanguageParser#type_keyword.
     def enterType_keyword(self, ctx:LanguageParser.Type_keywordContext):
         pass
 
     # Exit a parse tree produced by LanguageParser#type_keyword.
     def exitType_keyword(self, ctx:LanguageParser.Type_keywordContext):
-        pass
-
-
-    # Enter a parse tree produced by LanguageParser#int.
-    def enterInt(self, ctx:LanguageParser.IntContext):
-        pass
-
-    # Exit a parse tree produced by LanguageParser#int.
-    def exitInt(self, ctx:LanguageParser.IntContext):
-        pass
-
-
-    # Enter a parse tree produced by LanguageParser#float.
-    def enterFloat(self, ctx:LanguageParser.FloatContext):
-        pass
-
-    # Exit a parse tree produced by LanguageParser#float.
-    def exitFloat(self, ctx:LanguageParser.FloatContext):
-        pass
-
-
-    # Enter a parse tree produced by LanguageParser#bool.
-    def enterBool(self, ctx:LanguageParser.BoolContext):
-        pass
-
-    # Exit a parse tree produced by LanguageParser#bool.
-    def exitBool(self, ctx:LanguageParser.BoolContext):
-        pass
-
-
-    # Enter a parse tree produced by LanguageParser#string.
-    def enterString(self, ctx:LanguageParser.StringContext):
-        pass
-
-    # Exit a parse tree produced by LanguageParser#string.
-    def exitString(self, ctx:LanguageParser.StringContext):
         pass
 
 

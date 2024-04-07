@@ -49,8 +49,23 @@ class LanguageVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by LanguageParser#expression.
-    def visitExpression(self, ctx:LanguageParser.ExpressionContext):
+    # Visit a parse tree produced by LanguageParser#mulDivMod.
+    def visitMulDivMod(self, ctx:LanguageParser.MulDivModContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#logicalNot.
+    def visitLogicalNot(self, ctx:LanguageParser.LogicalNotContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#equalNotEqual.
+    def visitEqualNotEqual(self, ctx:LanguageParser.EqualNotEqualContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#addSubConcat.
+    def visitAddSubConcat(self, ctx:LanguageParser.AddSubConcatContext):
         return self.visitChildren(ctx)
 
 
@@ -59,28 +74,58 @@ class LanguageVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LanguageParser#intLiteral.
+    def visitIntLiteral(self, ctx:LanguageParser.IntLiteralContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#parantheses.
+    def visitParantheses(self, ctx:LanguageParser.ParanthesesContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#lesserGreater.
+    def visitLesserGreater(self, ctx:LanguageParser.LesserGreaterContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#logicalAnd.
+    def visitLogicalAnd(self, ctx:LanguageParser.LogicalAndContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#boolLiteral.
+    def visitBoolLiteral(self, ctx:LanguageParser.BoolLiteralContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#stringLiteral.
+    def visitStringLiteral(self, ctx:LanguageParser.StringLiteralContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#unaryMinus.
+    def visitUnaryMinus(self, ctx:LanguageParser.UnaryMinusContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#floatLiteral.
+    def visitFloatLiteral(self, ctx:LanguageParser.FloatLiteralContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#id.
+    def visitId(self, ctx:LanguageParser.IdContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LanguageParser#logicalOr.
+    def visitLogicalOr(self, ctx:LanguageParser.LogicalOrContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LanguageParser#type_keyword.
     def visitType_keyword(self, ctx:LanguageParser.Type_keywordContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by LanguageParser#int.
-    def visitInt(self, ctx:LanguageParser.IntContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by LanguageParser#float.
-    def visitFloat(self, ctx:LanguageParser.FloatContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by LanguageParser#bool.
-    def visitBool(self, ctx:LanguageParser.BoolContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by LanguageParser#string.
-    def visitString(self, ctx:LanguageParser.StringContext):
         return self.visitChildren(ctx)
 
 

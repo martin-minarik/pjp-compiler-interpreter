@@ -25,16 +25,16 @@ class TypeCheckingVisitor(LanguageVisitor):
             case "bool":
                 return Type.Bool
 
-    def visitInt(self, ctx: LanguageParser.IntContext):
+    def visitIntLiteral(self, ctx: LanguageParser.IntLiteralContext):
         return Type.Int, int(ctx.INT_LITERAL().getText())
 
-    def visitFloat(self, ctx: LanguageParser.FloatContext):
+    def visitFloatLiteral(self, ctx: LanguageParser.FloatLiteralContext):
         return Type.Float, float(ctx.FLOAT_LITERAL().getText())
 
-    def visitBool(self, ctx: LanguageParser.BoolContext):
+    def visitBoolLiteral(self, ctx: LanguageParser.BoolLiteralContext):
         return Type.Bool, ctx.BOOL_LITERAL().getText() == "true"
 
-    def visitString(self, ctx: LanguageParser.StringContext):
+    def visitStringLiteral(self, ctx: LanguageParser.StringLiteralContext):
         return Type.String, ctx.STRING_LITERAL().getText()[1:-1]
 
     def visitDeclaration(self, ctx: LanguageParser.DeclarationContext):

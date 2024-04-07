@@ -45,24 +45,22 @@ conditional: 'if' '(' expression ')' statement ( 'else' statement )?;
 
 while_loop: 'while' '(' expression ')' statement;
 
-expression: prefix='-' expression
-          | prefix='!' expression
-          | expression op=(MUL | DIV | MOD) expression
-          | expression op=(ADD | SUB | CONCAT) expression
-          | expression op=('<' | '>') expression
-          | expression op=('==' | '!=') expression
-          | expression op='&&' expression
-          | expression op='||' expression
-          | '(' expression ')'
-          | assignment
-          | IDENTIFIER
-          | literal;
+expression: prefix='-' expression # unaryMinus
+          | prefix='!' expression # logicalNot
+          | expression op=(MUL | DIV | MOD) expression # mulDivMod
+          | expression op=(ADD | SUB | CONCAT) expression # addSubConcat
+          | expression op=('<' | '>') expression # lesserGreater
+          | expression op=('==' | '!=') expression # equalNotEqual
+          | expression op='&&' expression # logicalAnd
+          | expression op='||' expression # logicalOr
+          | INT_LITERAL # intLiteral
+          | FLOAT_LITERAL # floatLiteral
+          | BOOL_LITERAL # boolLiteral
+          | STRING_LITERAL # stringLiteral
+          | IDENTIFIER # id
+          | '(' expression ')' # parantheses
+          | <assoc=right> IDENTIFIER '=' expression # assignment
+          ;
 
-assignment: <assoc=right> IDENTIFIER '=' expression;
 type_keyword: 'int' | 'float' | 'bool' | 'string';
 
-literal: INT_LITERAL # int
-       | FLOAT_LITERAL # float
-       | BOOL_LITERAL # bool
-       | STRING_LITERAL # string
-       ;
