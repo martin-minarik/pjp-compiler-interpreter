@@ -1,26 +1,28 @@
 import sys
-from antlr4 import *
-from LanguageLexer import LanguageLexer
-from LanguageParser import LanguageParser
 from pprint import pprint
+
+from antlr4 import *
 from antlr4.tree.Trees import Trees
 
-class VerboseErrorListener(DiagnosticErrorListener):
-    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        stack = recognizer.getRuleInvocationStack()
-        stack.reverse()
-        print("Rule stack: {}".format(stack))
-        print("line {}:{} at {}: {}".format(line, column, offendingSymbol, msg))
-        print()
+from LanguageLexer import LanguageLexer
+from LanguageParser import LanguageParser
+from stop_parsing_error_listener import StopParsingListener
+from verbose_error_listener import VerboseErrorListener
+
 
 def main(argv):
     input_stream = FileStream(argv[1])
     lexer = LanguageLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = LanguageParser(stream)
+
+    # Error listeners
     # parser.removeErrorListeners()  # Remove default error listeners
-    # parser.addErrorListener(VerboseErrorListener())  # Add custom listener
+    # parser.addErrorListener(VerboseErrorListener())
+    # parser.addErrorListener(StopParsingListener())
+
     tree = parser.program()
+
     if parser.getNumberOfSyntaxErrors() > 0:
         print("syntax errors")
     else:
