@@ -98,6 +98,15 @@ class LanguageListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LanguageParser#type_keyword.
+    def enterType_keyword(self, ctx:LanguageParser.Type_keywordContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#type_keyword.
+    def exitType_keyword(self, ctx:LanguageParser.Type_keywordContext):
+        pass
+
+
     # Enter a parse tree produced by LanguageParser#literal.
     def enterLiteral(self, ctx:LanguageParser.LiteralContext):
         pass

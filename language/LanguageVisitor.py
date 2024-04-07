@@ -59,6 +59,11 @@ class LanguageVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LanguageParser#type_keyword.
+    def visitType_keyword(self, ctx:LanguageParser.Type_keywordContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LanguageParser#literal.
     def visitLiteral(self, ctx:LanguageParser.LiteralContext):
         return self.visitChildren(ctx)

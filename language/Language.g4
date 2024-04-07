@@ -9,7 +9,6 @@ BOOL_LITERAL: 'true' | 'false';
 WS: [ \t\r\n]+ -> skip;      // skip spaces, tabs, and newlines
 SINGLE_LINE_COMMENT: '//' ~[\r\n]* -> skip;
 STRING_LITERAL: '"' (~["\\\r\n])* '"';
-TYPE: 'int' | 'float' | 'bool' | 'string';
 IDENTIFIER: CHARACTER (CHARACTER | [0-9])*;
 
 MUL : '*' ;
@@ -34,7 +33,7 @@ statement: ';'
          | SINGLE_LINE_COMMENT;
 
 
-declaration: TYPE IDENTIFIER (',' IDENTIFIER)* ';';
+declaration: type_keyword IDENTIFIER (',' IDENTIFIER)* ';';
 
 read_statement: 'read' IDENTIFIER (',' IDENTIFIER)* ';';
 
@@ -59,6 +58,7 @@ expression: prefix='-' expression
           | IDENTIFIER
           | literal;
 
-assignment: IDENTIFIER '=' expression;
+assignment: <assoc=right> IDENTIFIER '=' expression;
+type_keyword: 'int' | 'float' | 'bool' | 'string';
 
 literal: FLOAT_LITERAL | INT_LITERAL | BOOL_LITERAL | STRING_LITERAL;
