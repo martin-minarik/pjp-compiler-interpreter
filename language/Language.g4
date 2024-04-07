@@ -58,7 +58,7 @@ expression: prefix='-' expression # unaryMinus
           | BOOL_LITERAL # boolLiteral
           | STRING_LITERAL # stringLiteral
           | IDENTIFIER # id
-          | '(' expression ')' # parantheses
+          | '(' expression ')' # parentheses
           | <assoc=right> IDENTIFIER '=' expression # assignment
           ;
 

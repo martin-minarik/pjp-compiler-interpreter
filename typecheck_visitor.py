@@ -84,6 +84,9 @@ class TypeCheckingVisitor(LanguageVisitor):
             )  # Assuming add method takes IToken and Type
         return Type.Error, 0
 
+    def visitParentheses(self, ctx: LanguageParser.ParenthesesContext):
+        return self.visit(ctx.expression())
+
     def visitAssignment(self, ctx: LanguageParser.AssignmentContext):
         variable = self.symbol_table[ctx.IDENTIFIER().symbol]
         right = self.visit(ctx.expression())

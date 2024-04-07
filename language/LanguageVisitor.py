@@ -54,6 +54,11 @@ class LanguageVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LanguageParser#parentheses.
+    def visitParentheses(self, ctx:LanguageParser.ParenthesesContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LanguageParser#logicalNot.
     def visitLogicalNot(self, ctx:LanguageParser.LogicalNotContext):
         return self.visitChildren(ctx)
@@ -76,11 +81,6 @@ class LanguageVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by LanguageParser#intLiteral.
     def visitIntLiteral(self, ctx:LanguageParser.IntLiteralContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by LanguageParser#parantheses.
-    def visitParantheses(self, ctx:LanguageParser.ParanthesesContext):
         return self.visitChildren(ctx)
 
 

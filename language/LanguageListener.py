@@ -89,6 +89,15 @@ class LanguageListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LanguageParser#parentheses.
+    def enterParentheses(self, ctx:LanguageParser.ParenthesesContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#parentheses.
+    def exitParentheses(self, ctx:LanguageParser.ParenthesesContext):
+        pass
+
+
     # Enter a parse tree produced by LanguageParser#logicalNot.
     def enterLogicalNot(self, ctx:LanguageParser.LogicalNotContext):
         pass
@@ -131,15 +140,6 @@ class LanguageListener(ParseTreeListener):
 
     # Exit a parse tree produced by LanguageParser#intLiteral.
     def exitIntLiteral(self, ctx:LanguageParser.IntLiteralContext):
-        pass
-
-
-    # Enter a parse tree produced by LanguageParser#parantheses.
-    def enterParantheses(self, ctx:LanguageParser.ParanthesesContext):
-        pass
-
-    # Exit a parse tree produced by LanguageParser#parantheses.
-    def exitParantheses(self, ctx:LanguageParser.ParanthesesContext):
         pass
 
 

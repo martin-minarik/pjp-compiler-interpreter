@@ -797,6 +797,31 @@ class LanguageParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
+    class ParenthesesContext(ExpressionContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a LanguageParser.ExpressionContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expression(self):
+            return self.getTypedRuleContext(LanguageParser.ExpressionContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParentheses" ):
+                listener.enterParentheses(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParentheses" ):
+                listener.exitParentheses(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParentheses" ):
+                return visitor.visitParentheses(self)
+            else:
+                return visitor.visitChildren(self)
+
+
     class LogicalNotContext(ExpressionContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a LanguageParser.ExpressionContext
@@ -934,31 +959,6 @@ class LanguageParser ( Parser ):
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIntLiteral" ):
                 return visitor.visitIntLiteral(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class ParanthesesContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a LanguageParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expression(self):
-            return self.getTypedRuleContext(LanguageParser.ExpressionContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParantheses" ):
-                listener.enterParantheses(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParantheses" ):
-                listener.exitParantheses(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParantheses" ):
-                return visitor.visitParantheses(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1250,7 +1250,7 @@ class LanguageParser ( Parser ):
                 pass
 
             elif la_ == 8:
-                localctx = LanguageParser.ParanthesesContext(self, localctx)
+                localctx = LanguageParser.ParenthesesContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 107
