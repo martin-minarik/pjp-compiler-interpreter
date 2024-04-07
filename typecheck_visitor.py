@@ -37,6 +37,44 @@ class TypeCheckingVisitor(LanguageVisitor):
     def visitStringLiteral(self, ctx: LanguageParser.StringLiteralContext):
         return Type.String, ctx.STRING_LITERAL().getText()[1:-1]
 
+    def visitAddSubConcat(self, ctx: LanguageParser.AddSubConcatContext):
+        left = self.visit(ctx.expression()[0])
+        right = self.visit(ctx.expression()[1])
+
+        if (left[0] == Type.Error) or (right[0] == Type.Error):
+            return Type.Error, 0
+
+        # Numeric operations
+        if (left[0] in (Type.Int, Type.Float)) and (right[0] in (Type.Int, Type.Float)):
+            match ctx.op.type:
+                case LanguageParser.ADD:
+                    result = left[1] + right[1]
+
+                case LanguageParser.SUB:
+                    result = left[1] - right[1]
+
+                case _:
+                    Errors.report_error(
+                        ctx.op,
+                        f"Invalid numeric operation!",
+                    )
+                    return Type.Error, 0
+
+            type_ = Type.Float if isinstance(result, float) else Type.Int
+            return type_, result
+
+        # String operations
+        elif (left[0] == Type.String) and (right[0] == Type.String):
+            if ctx.op.type == LanguageParser.CONCAT:
+                return Type.String, left[1] + right[1]
+
+        Errors.report_error(
+            ctx.op,
+            f"Invalid type operation!",
+        )
+
+        return Type.Error, 0
+
     def visitDeclaration(self, ctx: LanguageParser.DeclarationContext):
         type_ = self.visit(ctx.type_keyword())
         for identifier in ctx.IDENTIFIER():
