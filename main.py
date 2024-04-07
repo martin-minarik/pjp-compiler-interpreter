@@ -7,6 +7,8 @@ from language.LanguageLexer import LanguageLexer
 from language.LanguageParser import LanguageParser
 from stop_parsing_error_listener import StopParsingListener
 from verbose_error_listener import VerboseErrorListener
+from typecheck_visitor import TypeCheckingVisitor
+from errors import Errors
 
 
 def main(argv):
@@ -26,7 +28,16 @@ def main(argv):
         print("syntax errors")
     else:
         print("Grammar is Ok")
-        print(Trees.toStringTree(tree, None, parser))
+        # print(Trees.toStringTree(tree, None, parser))
+
+        visitor = TypeCheckingVisitor()
+        visitor.visit(tree)
+
+        if Errors.number_of_errors():
+            Errors.print_and_clear_errors()
+
+        from pprint import pprint
+        pprint(visitor.symbol_table.memory)
 
 
 if __name__ == '__main__':
