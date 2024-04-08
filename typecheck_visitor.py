@@ -51,25 +51,25 @@ class TypeCheckingVisitor(LanguageVisitor):
 
     def visitConditional(self, ctx: LanguageParser.ConditionalContext):
         condition = self.visit(ctx.condition)
-        if condition == Type.Bool:
-            return Type.Bool
+        if condition != Type.Bool:
+            Errors.report_error_rule_context(
+                ctx.condition,
+                f"Result of condition must be of type bool!",
+            )
 
-        Errors.report_error_rule_context(
-            ctx.condition,
-            f"Result of condition must be of type bool!",
-        )
+        self.visitChildren(ctx)
 
         return Type.Error
 
     def visitWhile_loop(self, ctx: LanguageParser.While_loopContext):
         condition = self.visit(ctx.condition)
-        if condition == Type.Bool:
-            return Type.Bool
+        if condition != Type.Bool:
+            Errors.report_error_rule_context(
+                ctx.condition,
+                f"Result of condition must be of type bool!",
+            )
 
-        Errors.report_error_rule_context(
-            ctx.condition,
-            f"Result of condition must be of type bool!",
-        )
+        self.visitChildren(ctx)
 
         return Type.Error
 
@@ -162,6 +162,21 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         return Type.Error
 
+    def visitEqualNotEqual(self, ctx:LanguageParser.EqualNotEqualContext):
+        left = self.visit(ctx.expression()[0])
+        right = self.visit(ctx.expression()[1])
+
+        left_type, right_type = self.resolve_left_right_types(left, right)
+        if left_type == right_type:
+            return Type.Bool
+
+        Errors.report_error(
+            ctx.op,
+            f"Invalid type operation!",
+        )
+
+        return Type.Error
+
     def visitLogicalAnd(self, ctx: LanguageParser.LogicalAndContext):
         left = self.visit(ctx.expression()[0])
         right = self.visit(ctx.expression()[1])
@@ -230,7 +245,7 @@ class TypeCheckingVisitor(LanguageVisitor):
                 Errors.report_error(
                     ctx.IDENTIFIER().symbol,
                     f"Variable '{ctx.IDENTIFIER().getText()}' type is {variable.name.lower()},"
-                    f" but the assigned is {right.name.lower}",
+                    f" but the assigned is {right.name.lower()}",
                 )
 
             return right
