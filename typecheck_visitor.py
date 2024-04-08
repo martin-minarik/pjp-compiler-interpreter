@@ -8,11 +8,19 @@ from language.LanguageParser import LanguageParser
 from language.LanguageVisitor import LanguageVisitor
 from symbol_table import SymbolTable
 from type_enum import Type
-
+import operator as op
+from typing import Callable
 
 class TypeCheckingVisitor(LanguageVisitor):
     def __init__(self):
         self.symbol_table = SymbolTable()
+        self.binary_operations_table: dict[tuple[Type, Type, int], tuple[Type, Callable]] = {
+            (Type.Int, Type.Int, LanguageParser.MUL): (Type.Int, op.mul),
+            (Type.Float, Type.Float, LanguageParser.MUL): (Type.Float, op.mul),
+            (Type.Int, Type.Int, LanguageParser.DIV): (Type.Int, op.floordiv),
+            (Type.Float, Type.Float, LanguageParser.DIV): (Type.Float, op.truediv),
+            (Type.Int, Type.Int, LanguageParser.MOD): (Type.Int, op.imod),
+        }
 
     def visitType_keyword(self, ctx: LanguageParser.Type_keywordContext):
         match ctx.getText():
@@ -25,6 +33,21 @@ class TypeCheckingVisitor(LanguageVisitor):
             case "bool":
                 return Type.Bool
 
+    @staticmethod
+    def resolve_left_right_types(type_a: Type, type_b: Type) -> tuple[Type, Type]:
+        if TypeCheckingVisitor.check_float_cast(type_a, type_b):
+            return Type.Float, Type.Float
+
+        return type_a, type_b
+
+    @staticmethod
+    def check_float_cast(type_a: Type, type_b: Type) -> bool:
+        if (type_a == Type.Int) or (type_b == Type.Int):
+            if (type_a == Type.Float) or (type_b == Type.Float):
+                return True
+
+        return False
+
     def visitIntLiteral(self, ctx: LanguageParser.IntLiteralContext):
         return Type.Int, int(ctx.INT_LITERAL().getText())
 
@@ -36,6 +59,51 @@ class TypeCheckingVisitor(LanguageVisitor):
 
     def visitStringLiteral(self, ctx: LanguageParser.StringLiteralContext):
         return Type.String, ctx.STRING_LITERAL().getText()[1:-1]
+
+    def visitLogicalNot(self, ctx: LanguageParser.LogicalNotContext):
+        variable = self.visit(ctx.expression())
+        if variable[0] == Type.Bool:
+            return Type.Bool, not variable[1]
+
+        Errors.report_error(
+            ctx.op,
+            f"Invalid type operation!",
+        )
+
+        return Type.Error, 0
+
+    def visitUnaryMinus(self, ctx: LanguageParser.UnaryMinusContext):
+        variable = self.visit(ctx.expression())
+        if variable[0] in (Type.Int, Type.Float):
+            return variable[0], - variable[1]
+
+        Errors.report_error(
+            ctx.op,
+            f"Invalid type operation!",
+        )
+
+        return Type.Error, 0
+
+    def visitMulDivMod(self, ctx: LanguageParser.MulDivModContext):
+        left = self.visit(ctx.expression()[0])
+        right = self.visit(ctx.expression()[1])
+
+        type_left, type_right = self.resolve_left_right_types(left[0], right[0])
+
+        print(left[0], right[0])
+        print(type_left, type_right)
+
+        if type_op := self.binary_operations_table.get((type_left, type_right, ctx.op.type)):
+            print(left[1], right[1], type_op)
+            return type_op[0], type_op[1](left[1], right[1])
+
+        Errors.report_error(
+            ctx.op,
+            f"Invalid type operation!",
+        )
+
+        return Type.Error, 0
+
 
     def visitAddSubConcat(self, ctx: LanguageParser.AddSubConcatContext):
         left = self.visit(ctx.expression()[0])
@@ -86,6 +154,9 @@ class TypeCheckingVisitor(LanguageVisitor):
 
     def visitParentheses(self, ctx: LanguageParser.ParenthesesContext):
         return self.visit(ctx.expression())
+
+    def visitId(self, ctx: LanguageParser.IdContext):
+        return self.symbol_table[ctx.IDENTIFIER().symbol]
 
     def visitAssignment(self, ctx: LanguageParser.AssignmentContext):
         variable = self.symbol_table[ctx.IDENTIFIER().symbol]
