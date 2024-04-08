@@ -1,4 +1,5 @@
-from typing import Any
+import operator as op
+from typing import Any, Callable
 
 from antlr4.Token import *
 from antlr4.tree.Tree import TerminalNodeImpl
@@ -8,13 +9,14 @@ from language.LanguageParser import LanguageParser
 from language.LanguageVisitor import LanguageVisitor
 from symbol_table import SymbolTable
 from type_enum import Type
-import operator as op
-from typing import Callable
+
 
 class TypeCheckingVisitor(LanguageVisitor):
     def __init__(self):
         self.symbol_table = SymbolTable()
-        self.binary_operations_table: dict[tuple[Type, Type, int], tuple[Type, Callable]] = {
+        self.binary_operations_table: dict[
+            tuple[Type, Type, int], tuple[Type, Callable]
+        ] = {
             (Type.Int, Type.Int, LanguageParser.MUL): (Type.Int, op.mul),
             (Type.Float, Type.Float, LanguageParser.MUL): (Type.Float, op.mul),
             (Type.Int, Type.Int, LanguageParser.DIV): (Type.Int, op.floordiv),
@@ -75,7 +77,7 @@ class TypeCheckingVisitor(LanguageVisitor):
     def visitUnaryMinus(self, ctx: LanguageParser.UnaryMinusContext):
         variable = self.visit(ctx.expression())
         if variable[0] in (Type.Int, Type.Float):
-            return variable[0], - variable[1]
+            return variable[0], -variable[1]
 
         Errors.report_error(
             ctx.op,
@@ -89,12 +91,9 @@ class TypeCheckingVisitor(LanguageVisitor):
         right = self.visit(ctx.expression()[1])
 
         type_left, type_right = self.resolve_left_right_types(left[0], right[0])
-
-        print(left[0], right[0])
-        print(type_left, type_right)
-
-        if type_op := self.binary_operations_table.get((type_left, type_right, ctx.op.type)):
-            print(left[1], right[1], type_op)
+        if type_op := self.binary_operations_table.get(
+            (type_left, type_right, ctx.op.type)
+        ):
             return type_op[0], type_op[1](left[1], right[1])
 
         Errors.report_error(
@@ -103,7 +102,6 @@ class TypeCheckingVisitor(LanguageVisitor):
         )
 
         return Type.Error, 0
-
 
     def visitAddSubConcat(self, ctx: LanguageParser.AddSubConcatContext):
         left = self.visit(ctx.expression()[0])
@@ -143,13 +141,62 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         return Type.Error, 0
 
+    def visitLesserGreater(self, ctx: LanguageParser.LesserGreaterContext):
+        left = self.visit(ctx.expression()[0])
+        right = self.visit(ctx.expression()[1])
+        if (left[0] == Type.Error) or (right[0] == Type.Error):
+            return Type.Error, 0
+
+        if (left[0] in (Type.Int, Type.Float)) and (right[0] in (Type.Int, Type.Float)):
+            result = (op.gt if ctx.op.type == LanguageParser.GT else op.lt)(
+                left[1], right[1]
+            )
+            return Type.Bool, result
+
+        Errors.report_error(
+            ctx.op,
+            f"Invalid type operation!",
+        )
+
+        return Type.Error, 0
+
+    def visitLogicalAnd(self, ctx: LanguageParser.LogicalAndContext):
+        left = self.visit(ctx.expression()[0])
+        right = self.visit(ctx.expression()[1])
+        if (left[0] == Type.Error) or (right[0] == Type.Error):
+            return Type.Error, 0
+
+        if (left[0] == Type.Bool) and (right[0] == Type.Bool):
+            return Type.Bool, left[1] and right[1]
+
+        Errors.report_error(
+            ctx.op,
+            f"Invalid type operation!",
+        )
+
+        return Type.Error, 0
+
+    def visitLogicalOr(self, ctx: LanguageParser.LogicalAndContext):
+        left = self.visit(ctx.expression()[0])
+        right = self.visit(ctx.expression()[1])
+        if (left[0] == Type.Error) or (right[0] == Type.Error):
+            return Type.Error, 0
+
+        if (left[0] == Type.Bool) and (right[0] == Type.Bool):
+            return Type.Bool, left[1] or right[1]
+
+        Errors.report_error(
+            ctx.op,
+            f"Invalid type operation!",
+        )
+
+        return Type.Error, 0
+
     def visitDeclaration(self, ctx: LanguageParser.DeclarationContext):
         type_ = self.visit(ctx.type_keyword())
         for identifier in ctx.IDENTIFIER():
             identifier: TerminalNodeImpl
-            self.symbol_table.add(
-                identifier.symbol, type_
-            )  # Assuming add method takes IToken and Type
+            self.symbol_table.add(identifier.symbol, type_)
         return Type.Error, 0
 
     def visitParentheses(self, ctx: LanguageParser.ParenthesesContext):
