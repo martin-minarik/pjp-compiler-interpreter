@@ -17,7 +17,12 @@ ADD : '+' ;
 SUB : '-' ;
 MOD : '%';
 CONCAT: '.';
-
+EQUAL: '==';
+NOTEQUAL: '!=';
+AND: '&&';
+OR: '||';
+GT: '>';
+LT: '<';
 
 // Parser rules
 program: (statement)+ EOF;
@@ -49,10 +54,10 @@ expression: prefix='-' expression # unaryMinus
           | prefix='!' expression # logicalNot
           | expression op=(MUL | DIV | MOD) expression # mulDivMod
           | expression op=(ADD | SUB | CONCAT) expression # addSubConcat
-          | expression op=('<' | '>') expression # lesserGreater
-          | expression op=('==' | '!=') expression # equalNotEqual
-          | expression op='&&' expression # logicalAnd
-          | expression op='||' expression # logicalOr
+          | expression op=(LT | GT) expression # lesserGreater
+          | expression op=(EQUAL | NOTEQUAL) expression # equalNotEqual
+          | expression op=AND expression # logicalAnd
+          | expression op=OR expression # logicalOr
           | INT_LITERAL # intLiteral
           | FLOAT_LITERAL # floatLiteral
           | BOOL_LITERAL # boolLiteral

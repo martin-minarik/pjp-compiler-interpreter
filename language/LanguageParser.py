@@ -20,20 +20,20 @@ def serializedATN():
         1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,3,8,
         115,8,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,
         1,8,1,8,1,8,1,8,5,8,135,8,8,10,8,12,8,138,9,8,1,9,1,9,1,9,0,1,16,
-        10,0,2,4,6,8,10,12,14,16,18,0,5,2,0,31,32,35,35,2,0,33,34,36,36,
-        1,0,13,14,1,0,15,16,1,0,20,23,159,0,21,1,0,0,0,2,38,1,0,0,0,4,40,
+        10,0,2,4,6,8,10,12,14,16,18,0,5,2,0,25,26,29,29,2,0,27,28,30,30,
+        1,0,35,36,1,0,31,32,1,0,14,17,159,0,21,1,0,0,0,2,38,1,0,0,0,4,40,
         1,0,0,0,6,51,1,0,0,0,8,62,1,0,0,0,10,73,1,0,0,0,12,82,1,0,0,0,14,
         91,1,0,0,0,16,114,1,0,0,0,18,139,1,0,0,0,20,22,3,2,1,0,21,20,1,0,
         0,0,22,23,1,0,0,0,23,21,1,0,0,0,23,24,1,0,0,0,24,25,1,0,0,0,25,26,
         5,0,0,1,26,1,1,0,0,0,27,39,5,1,0,0,28,39,3,4,2,0,29,30,3,16,8,0,
         30,31,5,1,0,0,31,39,1,0,0,0,32,39,3,6,3,0,33,39,3,8,4,0,34,39,3,
-        10,5,0,35,39,3,12,6,0,36,39,3,14,7,0,37,39,5,27,0,0,38,27,1,0,0,
+        10,5,0,35,39,3,12,6,0,36,39,3,14,7,0,37,39,5,21,0,0,38,27,1,0,0,
         0,38,28,1,0,0,0,38,29,1,0,0,0,38,32,1,0,0,0,38,33,1,0,0,0,38,34,
         1,0,0,0,38,35,1,0,0,0,38,36,1,0,0,0,38,37,1,0,0,0,39,3,1,0,0,0,40,
-        41,3,18,9,0,41,46,5,29,0,0,42,43,5,2,0,0,43,45,5,29,0,0,44,42,1,
+        41,3,18,9,0,41,46,5,23,0,0,42,43,5,2,0,0,43,45,5,23,0,0,44,42,1,
         0,0,0,45,48,1,0,0,0,46,44,1,0,0,0,46,47,1,0,0,0,47,49,1,0,0,0,48,
-        46,1,0,0,0,49,50,5,1,0,0,50,5,1,0,0,0,51,52,5,3,0,0,52,57,5,29,0,
-        0,53,54,5,2,0,0,54,56,5,29,0,0,55,53,1,0,0,0,56,59,1,0,0,0,57,55,
+        46,1,0,0,0,49,50,5,1,0,0,50,5,1,0,0,0,51,52,5,3,0,0,52,57,5,23,0,
+        0,53,54,5,2,0,0,54,56,5,23,0,0,55,53,1,0,0,0,56,59,1,0,0,0,57,55,
         1,0,0,0,57,58,1,0,0,0,58,60,1,0,0,0,59,57,1,0,0,0,60,61,5,1,0,0,
         61,7,1,0,0,0,62,63,5,4,0,0,63,68,3,16,8,0,64,65,5,2,0,0,65,67,3,
         16,8,0,66,64,1,0,0,0,67,70,1,0,0,0,68,66,1,0,0,0,68,69,1,0,0,0,69,
@@ -43,18 +43,18 @@ def serializedATN():
         82,83,5,7,0,0,83,84,5,8,0,0,84,85,3,16,8,0,85,86,5,9,0,0,86,89,3,
         2,1,0,87,88,5,10,0,0,88,90,3,2,1,0,89,87,1,0,0,0,89,90,1,0,0,0,90,
         13,1,0,0,0,91,92,5,11,0,0,92,93,5,8,0,0,93,94,3,16,8,0,94,95,5,9,
-        0,0,95,96,3,2,1,0,96,15,1,0,0,0,97,98,6,8,-1,0,98,99,5,34,0,0,99,
-        115,3,16,8,15,100,101,5,12,0,0,101,115,3,16,8,14,102,115,5,24,0,
-        0,103,115,5,25,0,0,104,115,5,26,0,0,105,115,5,28,0,0,106,115,5,29,
+        0,0,95,96,3,2,1,0,96,15,1,0,0,0,97,98,6,8,-1,0,98,99,5,28,0,0,99,
+        115,3,16,8,15,100,101,5,12,0,0,101,115,3,16,8,14,102,115,5,18,0,
+        0,103,115,5,19,0,0,104,115,5,20,0,0,105,115,5,22,0,0,106,115,5,23,
         0,0,107,108,5,8,0,0,108,109,3,16,8,0,109,110,5,9,0,0,110,115,1,0,
-        0,0,111,112,5,29,0,0,112,113,5,19,0,0,113,115,3,16,8,1,114,97,1,
+        0,0,111,112,5,23,0,0,112,113,5,13,0,0,113,115,3,16,8,1,114,97,1,
         0,0,0,114,100,1,0,0,0,114,102,1,0,0,0,114,103,1,0,0,0,114,104,1,
         0,0,0,114,105,1,0,0,0,114,106,1,0,0,0,114,107,1,0,0,0,114,111,1,
         0,0,0,115,136,1,0,0,0,116,117,10,13,0,0,117,118,7,0,0,0,118,135,
         3,16,8,14,119,120,10,12,0,0,120,121,7,1,0,0,121,135,3,16,8,13,122,
         123,10,11,0,0,123,124,7,2,0,0,124,135,3,16,8,12,125,126,10,10,0,
-        0,126,127,7,3,0,0,127,135,3,16,8,11,128,129,10,9,0,0,129,130,5,17,
-        0,0,130,135,3,16,8,10,131,132,10,8,0,0,132,133,5,18,0,0,133,135,
+        0,126,127,7,3,0,0,127,135,3,16,8,11,128,129,10,9,0,0,129,130,5,33,
+        0,0,130,135,3,16,8,10,131,132,10,8,0,0,132,133,5,34,0,0,133,135,
         3,16,8,9,134,116,1,0,0,0,134,119,1,0,0,0,134,122,1,0,0,0,134,125,
         1,0,0,0,134,128,1,0,0,0,134,131,1,0,0,0,135,138,1,0,0,0,136,134,
         1,0,0,0,136,137,1,0,0,0,137,17,1,0,0,0,138,136,1,0,0,0,139,140,7,
@@ -73,21 +73,21 @@ class LanguageParser ( Parser ):
 
     literalNames = [ "<INVALID>", "';'", "','", "'read'", "'write'", "'{'", 
                      "'}'", "'if'", "'('", "')'", "'else'", "'while'", "'!'", 
-                     "'<'", "'>'", "'=='", "'!='", "'&&'", "'||'", "'='", 
-                     "'int'", "'float'", "'bool'", "'string'", "<INVALID>", 
+                     "'='", "'int'", "'float'", "'bool'", "'string'", "<INVALID>", 
                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                      "<INVALID>", "<INVALID>", "'*'", "'/'", "'+'", "'-'", 
-                     "'%'", "'.'" ]
+                     "'%'", "'.'", "'=='", "'!='", "'&&'", "'||'", "'>'", 
+                     "'<'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "INT_LITERAL", "FLOAT_LITERAL", "BOOL_LITERAL", "SINGLE_LINE_COMMENT", 
-                      "STRING_LITERAL", "IDENTIFIER", "WS", "MUL", "DIV", 
-                      "ADD", "SUB", "MOD", "CONCAT" ]
+                      "<INVALID>", "<INVALID>", "INT_LITERAL", "FLOAT_LITERAL", 
+                      "BOOL_LITERAL", "SINGLE_LINE_COMMENT", "STRING_LITERAL", 
+                      "IDENTIFIER", "WS", "MUL", "DIV", "ADD", "SUB", "MOD", 
+                      "CONCAT", "EQUAL", "NOTEQUAL", "AND", "OR", "GT", 
+                      "LT" ]
 
     RULE_program = 0
     RULE_statement = 1
@@ -122,25 +122,25 @@ class LanguageParser ( Parser ):
     T__14=15
     T__15=16
     T__16=17
-    T__17=18
-    T__18=19
-    T__19=20
-    T__20=21
-    T__21=22
-    T__22=23
-    INT_LITERAL=24
-    FLOAT_LITERAL=25
-    BOOL_LITERAL=26
-    SINGLE_LINE_COMMENT=27
-    STRING_LITERAL=28
-    IDENTIFIER=29
-    WS=30
-    MUL=31
-    DIV=32
-    ADD=33
-    SUB=34
-    MOD=35
-    CONCAT=36
+    INT_LITERAL=18
+    FLOAT_LITERAL=19
+    BOOL_LITERAL=20
+    SINGLE_LINE_COMMENT=21
+    STRING_LITERAL=22
+    IDENTIFIER=23
+    WS=24
+    MUL=25
+    DIV=26
+    ADD=27
+    SUB=28
+    MOD=29
+    CONCAT=30
+    EQUAL=31
+    NOTEQUAL=32
+    AND=33
+    OR=34
+    GT=35
+    LT=36
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -204,7 +204,7 @@ class LanguageParser ( Parser ):
                 self.state = 23 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 18252569018) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 285202874) != 0)):
                     break
 
             self.state = 25
@@ -289,12 +289,12 @@ class LanguageParser ( Parser ):
                 self.state = 27
                 self.match(LanguageParser.T__0)
                 pass
-            elif token in [20, 21, 22, 23]:
+            elif token in [14, 15, 16, 17]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 28
                 self.declaration()
                 pass
-            elif token in [8, 12, 24, 25, 26, 28, 29, 34]:
+            elif token in [8, 12, 18, 19, 20, 22, 23, 28]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 29
                 self.expression(0)
@@ -326,7 +326,7 @@ class LanguageParser ( Parser ):
                 self.state = 36
                 self.while_loop()
                 pass
-            elif token in [27]:
+            elif token in [21]:
                 self.enterOuterAlt(localctx, 9)
                 self.state = 37
                 self.match(LanguageParser.SINGLE_LINE_COMMENT)
@@ -595,7 +595,7 @@ class LanguageParser ( Parser ):
             self.state = 77
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 18252569018) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 285202874) != 0):
                 self.state = 74
                 self.statement()
                 self.state = 79
@@ -861,6 +861,10 @@ class LanguageParser ( Parser ):
             else:
                 return self.getTypedRuleContext(LanguageParser.ExpressionContext,i)
 
+        def EQUAL(self):
+            return self.getToken(LanguageParser.EQUAL, 0)
+        def NOTEQUAL(self):
+            return self.getToken(LanguageParser.NOTEQUAL, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterEqualNotEqual" ):
@@ -976,6 +980,10 @@ class LanguageParser ( Parser ):
             else:
                 return self.getTypedRuleContext(LanguageParser.ExpressionContext,i)
 
+        def LT(self):
+            return self.getToken(LanguageParser.LT, 0)
+        def GT(self):
+            return self.getToken(LanguageParser.GT, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLesserGreater" ):
@@ -1005,6 +1013,8 @@ class LanguageParser ( Parser ):
             else:
                 return self.getTypedRuleContext(LanguageParser.ExpressionContext,i)
 
+        def AND(self):
+            return self.getToken(LanguageParser.AND, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLogicalAnd" ):
@@ -1158,6 +1168,8 @@ class LanguageParser ( Parser ):
             else:
                 return self.getTypedRuleContext(LanguageParser.ExpressionContext,i)
 
+        def OR(self):
+            return self.getToken(LanguageParser.OR, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterLogicalOr" ):
@@ -1268,7 +1280,7 @@ class LanguageParser ( Parser ):
                 self.state = 111
                 self.match(LanguageParser.IDENTIFIER)
                 self.state = 112
-                self.match(LanguageParser.T__18)
+                self.match(LanguageParser.T__12)
                 self.state = 113
                 self.expression(1)
                 pass
@@ -1296,7 +1308,7 @@ class LanguageParser ( Parser ):
                         self.state = 117
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 40802189312) != 0)):
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 637534208) != 0)):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -1315,7 +1327,7 @@ class LanguageParser ( Parser ):
                         self.state = 120
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 94489280512) != 0)):
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 1476395008) != 0)):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -1334,7 +1346,7 @@ class LanguageParser ( Parser ):
                         self.state = 123
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la==13 or _la==14):
+                        if not(_la==35 or _la==36):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -1353,7 +1365,7 @@ class LanguageParser ( Parser ):
                         self.state = 126
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la==15 or _la==16):
+                        if not(_la==31 or _la==32):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -1370,7 +1382,7 @@ class LanguageParser ( Parser ):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
                         self.state = 129
-                        localctx.op = self.match(LanguageParser.T__16)
+                        localctx.op = self.match(LanguageParser.AND)
                         self.state = 130
                         self.expression(10)
                         pass
@@ -1383,7 +1395,7 @@ class LanguageParser ( Parser ):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
                         self.state = 132
-                        localctx.op = self.match(LanguageParser.T__17)
+                        localctx.op = self.match(LanguageParser.OR)
                         self.state = 133
                         self.expression(9)
                         pass
@@ -1439,7 +1451,7 @@ class LanguageParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 139
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 15728640) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 245760) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
