@@ -619,16 +619,17 @@ class LanguageParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
-        def expression(self):
-            return self.getTypedRuleContext(LanguageParser.ExpressionContext,0)
-
+            self.condition = None # ExpressionContext
 
         def statement(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(LanguageParser.StatementContext)
             else:
                 return self.getTypedRuleContext(LanguageParser.StatementContext,i)
+
+
+        def expression(self):
+            return self.getTypedRuleContext(LanguageParser.ExpressionContext,0)
 
 
         def getRuleIndex(self):
@@ -662,7 +663,7 @@ class LanguageParser ( Parser ):
             self.state = 83
             self.match(LanguageParser.T__7)
             self.state = 84
-            self.expression(0)
+            localctx.condition = self.expression(0)
             self.state = 85
             self.match(LanguageParser.T__8)
             self.state = 86
@@ -692,13 +693,14 @@ class LanguageParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-
-        def expression(self):
-            return self.getTypedRuleContext(LanguageParser.ExpressionContext,0)
-
+            self.condition = None # ExpressionContext
 
         def statement(self):
             return self.getTypedRuleContext(LanguageParser.StatementContext,0)
+
+
+        def expression(self):
+            return self.getTypedRuleContext(LanguageParser.ExpressionContext,0)
 
 
         def getRuleIndex(self):
@@ -732,7 +734,7 @@ class LanguageParser ( Parser ):
             self.state = 92
             self.match(LanguageParser.T__7)
             self.state = 93
-            self.expression(0)
+            localctx.condition = self.expression(0)
             self.state = 94
             self.match(LanguageParser.T__8)
             self.state = 95

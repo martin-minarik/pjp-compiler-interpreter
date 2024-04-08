@@ -46,9 +46,9 @@ write_statement: 'write' expression (',' expression)* ';';
 
 block: '{' statement* '}';
 
-conditional: 'if' '(' expression ')' statement ( 'else' statement )?;
+conditional: 'if' '(' condition=expression ')' statement ( 'else' statement )?;
 
-while_loop: 'while' '(' expression ')' statement;
+while_loop: 'while' '(' condition=expression ')' statement;
 
 expression: prefix='-' expression # unaryMinus
           | prefix='!' expression # logicalNot
