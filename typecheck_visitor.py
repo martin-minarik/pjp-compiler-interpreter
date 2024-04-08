@@ -54,7 +54,7 @@ class TypeCheckingVisitor(LanguageVisitor):
         if condition != Type.Bool:
             Errors.report_error_rule_context(
                 ctx.condition,
-                f"Result of condition must be of type bool!",
+                f"Invalid condition. Should an expression with a type bool!",
             )
 
         self.visitChildren(ctx)
@@ -66,12 +66,24 @@ class TypeCheckingVisitor(LanguageVisitor):
         if condition != Type.Bool:
             Errors.report_error_rule_context(
                 ctx.condition,
-                f"Result of condition must be of type bool!",
+                f"Invalid condition. Should an expression with a type bool!",
             )
 
         self.visitChildren(ctx)
 
         return Type.Error
+
+    def visitFor_loop(self, ctx:LanguageParser.For_loopContext):
+        self.visit(ctx.expression()[0])
+        condition = self.visit(ctx.expression()[1])
+        self.visit(ctx.expression()[2])
+
+        if condition != Type.Bool:
+            Errors.report_error_rule_context(
+                ctx.expression()[1],
+                f"Invalid condition. Should an expression with a type bool!",
+            )
+
 
     def visitIntLiteral(self, ctx: LanguageParser.IntLiteralContext):
         return Type.Int
@@ -92,7 +104,7 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         Errors.report_error(
             ctx.prefix,
-            f"Invalid type operation!",
+            f"Invalid type for logical negation!",
         )
 
         return Type.Error
@@ -104,7 +116,7 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         Errors.report_error(
             ctx.prefix,
-            f"Invalid type operation!",
+            f"Invalid type for unary minus!",
         )
 
         return Type.Error
@@ -119,10 +131,7 @@ class TypeCheckingVisitor(LanguageVisitor):
         ):
             return type_
 
-        Errors.report_error(
-            ctx.op,
-            f"Invalid type operation!",
-        )
+        Errors.report_error(ctx.op, f"Invalid operation. \"{left.name} {ctx.op.text} {right.name}\"")
 
         return Type.Error
 
@@ -139,10 +148,7 @@ class TypeCheckingVisitor(LanguageVisitor):
         ):
             return type_
 
-        Errors.report_error(
-            ctx.op,
-            f"Invalid type operation!",
-        )
+        Errors.report_error(ctx.op, f"Invalid operation. \"{left.name} {ctx.op.text} {right.name}\"")
 
         return Type.Error
 
@@ -157,12 +163,12 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         Errors.report_error(
             ctx.op,
-            f"Invalid type operation!",
+            f"Invalid type for comparison!",
         )
 
         return Type.Error
 
-    def visitEqualNotEqual(self, ctx:LanguageParser.EqualNotEqualContext):
+    def visitEqualNotEqual(self, ctx: LanguageParser.EqualNotEqualContext):
         left = self.visit(ctx.expression()[0])
         right = self.visit(ctx.expression()[1])
 
@@ -172,7 +178,7 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         Errors.report_error(
             ctx.op,
-            f"Invalid type operation!",
+            f"Invalid type for equality testing!",
         )
 
         return Type.Error
@@ -188,7 +194,7 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         Errors.report_error(
             ctx.op,
-            f"Invalid type operation!",
+            f"Invalid type for logical AND!",
         )
 
         return Type.Error
@@ -204,7 +210,7 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         Errors.report_error(
             ctx.op,
-            f"Invalid type operation!",
+            f"Invalid type for logical OR!",
         )
 
         return Type.Error
