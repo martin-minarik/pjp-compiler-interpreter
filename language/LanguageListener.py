@@ -80,6 +80,15 @@ class LanguageListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LanguageParser#for_loop.
+    def enterFor_loop(self, ctx:LanguageParser.For_loopContext):
+        pass
+
+    # Exit a parse tree produced by LanguageParser#for_loop.
+    def exitFor_loop(self, ctx:LanguageParser.For_loopContext):
+        pass
+
+
     # Enter a parse tree produced by LanguageParser#mulDivMod.
     def enterMulDivMod(self, ctx:LanguageParser.MulDivModContext):
         pass

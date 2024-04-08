@@ -49,6 +49,11 @@ class LanguageVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LanguageParser#for_loop.
+    def visitFor_loop(self, ctx:LanguageParser.For_loopContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LanguageParser#mulDivMod.
     def visitMulDivMod(self, ctx:LanguageParser.MulDivModContext):
         return self.visitChildren(ctx)

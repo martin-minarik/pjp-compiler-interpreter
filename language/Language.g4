@@ -35,6 +35,7 @@ statement: ';'
          | block
          | conditional
          | while_loop
+         | for_loop
          | SINGLE_LINE_COMMENT;
 
 
@@ -49,6 +50,8 @@ block: '{' statement* '}';
 conditional: 'if' '(' condition=expression ')' statement ( 'else' statement )?;
 
 while_loop: 'while' '(' condition=expression ')' statement;
+
+for_loop: 'for' '(' expression ';' expression ';' expression ')' statement;
 
 expression: prefix='-' expression # unaryMinus
           | prefix='!' expression # logicalNot
