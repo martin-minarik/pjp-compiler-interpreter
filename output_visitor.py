@@ -18,6 +18,12 @@ class OutputVisitor(LanguageVisitor):
             Type.String: "S",
         }
 
+    def resolve_itof_binary_op(self, left: ParserRuleContext, right: ParserRuleContext):
+        if isinstance(left, LanguageParser.IntLiteralContext) and isinstance(
+                right, LanguageParser.FloatLiteralContext
+        ):
+            self.output_list.append("itof")
+
     def visitIntLiteral(self, ctx: LanguageParser.IntLiteralContext):
         self.output_list.append(f"push I {ctx.INT_LITERAL().getText()}")
 
@@ -77,16 +83,10 @@ class OutputVisitor(LanguageVisitor):
         left = ctx.expression()[0]
         right = ctx.expression()[1]
         self.visit(left)
-        if isinstance(left, LanguageParser.IntLiteralContext) and isinstance(
-            right, LanguageParser.FloatLiteralContext
-        ):
-            self.output_list.append("itof")
+        self.resolve_itof_binary_op(left, right)
 
         self.visit(right)
-        if isinstance(right, LanguageParser.IntLiteralContext) and isinstance(
-            left, LanguageParser.FloatLiteralContext
-        ):
-            self.output_list.append("itof")
+        self.resolve_itof_binary_op(right, left)
 
         match ctx.op.type:
             case LanguageParser.MUL:
@@ -100,16 +100,10 @@ class OutputVisitor(LanguageVisitor):
         left = ctx.expression()[0]
         right = ctx.expression()[1]
         self.visit(left)
-        if isinstance(left, LanguageParser.IntLiteralContext) and isinstance(
-            right, LanguageParser.FloatLiteralContext
-        ):
-            self.output_list.append("itof")
+        self.resolve_itof_binary_op(left, right)
 
         self.visit(right)
-        if isinstance(right, LanguageParser.IntLiteralContext) and isinstance(
-            left, LanguageParser.FloatLiteralContext
-        ):
-            self.output_list.append("itof")
+        self.resolve_itof_binary_op(right, left)
 
         match ctx.op.type:
             case LanguageParser.ADD:
@@ -118,6 +112,55 @@ class OutputVisitor(LanguageVisitor):
                 self.output_list.append("sub")
             case LanguageParser.CONCAT:
                 self.output_list.append("concat")
+
+    def visitLesserGreater(self, ctx: LanguageParser.MulDivModContext):
+        left = ctx.expression()[0]
+        right = ctx.expression()[1]
+        self.visit(left)
+        self.resolve_itof_binary_op(left, right)
+
+        self.visit(right)
+        self.resolve_itof_binary_op(right, left)
+
+        match ctx.op.type:
+            case LanguageParser.LT:
+                self.output_list.append("lt")
+            case LanguageParser.GT:
+                self.output_list.append("gt")
+
+    def visitEqualNotEqual(self, ctx: LanguageParser.MulDivModContext):
+        left = ctx.expression()[0]
+        right = ctx.expression()[1]
+        self.visit(left)
+        self.visit(right)
+
+        match ctx.op.type:
+            case LanguageParser.EQUAL:
+                self.output_list.append("eq")
+            case LanguageParser.NOTEQUAL:
+                self.output_list.append("eq")
+                self.output_list.append("not")
+
+    def visitLogicalAnd(self, ctx: LanguageParser.MulDivModContext):
+        left = ctx.expression()[0]
+        right = ctx.expression()[1]
+        self.visit(left)
+        self.visit(right)
+
+        self.output_list.append("and")
+
+    def visitLogicalOr(self, ctx: LanguageParser.MulDivModContext):
+        left = ctx.expression()[0]
+        right = ctx.expression()[1]
+        self.visit(left)
+        self.visit(right)
+
+        self.output_list.append("or")
+
+    def visitLogicalNot(self, ctx: LanguageParser.MulDivModContext):
+        self.visit(ctx.expression())
+
+        self.output_list.append("not")
 
     def visitDeclaration(self, ctx: LanguageParser.DeclarationContext):
         for identifier in ctx.IDENTIFIER():
@@ -130,7 +173,7 @@ class OutputVisitor(LanguageVisitor):
 
         # itof
         if self.symbol_table[ctx.IDENTIFIER().symbol] == Type.Float and isinstance(
-            ctx.expression(), LanguageParser.IntLiteralContext
+                ctx.expression(), LanguageParser.IntLiteralContext
         ):
             self.output_list.append("itof")
 
