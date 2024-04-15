@@ -38,15 +38,15 @@ def main(argv):
 
         if Errors.number_of_errors():
             Errors.print_and_clear_errors()
-            return
+            # return
 
-        print("Type Checking is Ok")
+        # print("Type Checking is Ok")
 
 
         print("OutputVisitor:")
-        output_visitor = OutputVisitor()
-        # output = output_visitor.visit(tree)
-        # print(output)
+        output_visitor = OutputVisitor(typecheck_visitor.symbol_table)
+        output = output_visitor.visit(tree)
+        print('\n'.join(output))
 
 
 if __name__ == "__main__":
