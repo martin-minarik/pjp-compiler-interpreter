@@ -17,10 +17,15 @@ class OutputVisitor(LanguageVisitor):
             Type.Bool: "B",
             Type.String: "S",
         }
+        self.jump_idx = -1
+
+    def new_jump_idx(self):
+        self.jump_idx += 1
+        return self.jump_idx
 
     def resolve_itof_binary_op(self, left: ParserRuleContext, right: ParserRuleContext):
         if isinstance(left, LanguageParser.IntLiteralContext) and isinstance(
-                right, LanguageParser.FloatLiteralContext
+            right, LanguageParser.FloatLiteralContext
         ):
             self.output_list.append("itof")
 
@@ -168,12 +173,37 @@ class OutputVisitor(LanguageVisitor):
             self.visit(ctx.type_keyword())
             self.output_list.append(f"save {identifier.getText()}")
 
+    def visitConditional(self, ctx: LanguageParser.ConditionalContext):
+        self.visit(ctx.condition)
+        fjmp = self.new_jump_idx()
+        jmp = self.new_jump_idx()
+
+        self.output_list.append(f"fjmp {fjmp}")
+        self.visit(ctx.if_body)
+
+        self.output_list.append(f"jmp {jmp}")
+        self.output_list.append(f"label {fjmp}")
+        if ctx.else_body:
+            self.visit(ctx.else_body)
+        self.output_list.append(f"label {jmp}")
+
+    def visitWhile_loop(self, ctx: LanguageParser.While_loopContext):
+        jmp = self.new_jump_idx()
+        fjmp = self.new_jump_idx()
+
+        self.output_list.append(f"label {jmp}")
+        self.visit(ctx.condition)
+        self.output_list.append(f"fjmp {fjmp}")
+        self.visit(ctx.statement())
+        self.output_list.append(f"jmp {jmp}")
+        self.output_list.append(f"label {fjmp}")
+
     def visitAssignment(self, ctx: LanguageParser.AssignmentContext):
         self.visit(ctx.expression())
 
         # itof
         if self.symbol_table[ctx.IDENTIFIER().symbol] == Type.Float and isinstance(
-                ctx.expression(), LanguageParser.IntLiteralContext
+            ctx.expression(), LanguageParser.IntLiteralContext
         ):
             self.output_list.append("itof")
 

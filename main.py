@@ -7,9 +7,9 @@ from antlr4.tree.Trees import Trees
 from errors import Errors
 from language.LanguageLexer import LanguageLexer
 from language.LanguageParser import LanguageParser
+from output_visitor import OutputVisitor
 from stop_parsing_error_listener import StopParsingListener
 from typecheck_visitor import TypeCheckingVisitor
-from output_visitor import OutputVisitor
 from verbose_error_listener import VerboseErrorListener
 
 
@@ -38,15 +38,17 @@ def main(argv):
 
         if Errors.number_of_errors():
             Errors.print_and_clear_errors()
-            # return
+            return
+        else:
+            print("Type Checking is Ok")
+            print("OutputVisitor:")
+            output_visitor = OutputVisitor(typecheck_visitor.symbol_table)
+            output = output_visitor.visit(tree)
+            output_str = "\n".join(output)
+            print(output_str)
 
-        # print("Type Checking is Ok")
-
-
-        print("OutputVisitor:")
-        output_visitor = OutputVisitor(typecheck_visitor.symbol_table)
-        output = output_visitor.visit(tree)
-        print('\n'.join(output))
+            with open("output.txt", "w") as file:
+                file.write(output_str)
 
 
 if __name__ == "__main__":

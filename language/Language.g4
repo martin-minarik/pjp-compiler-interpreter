@@ -47,7 +47,7 @@ write_statement: 'write' expression (',' expression)* ';';
 
 block: '{' statement* '}';
 
-conditional: 'if' '(' condition=expression ')' statement ( 'else' statement )?;
+conditional: 'if' '(' condition=expression ')' if_body=statement ( 'else' else_body=statement )?;
 
 while_loop: 'while' '(' condition=expression ')' statement;
 

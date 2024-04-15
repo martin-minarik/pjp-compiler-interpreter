@@ -636,16 +636,18 @@ class LanguageParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
             self.condition = None # ExpressionContext
+            self.if_body = None # StatementContext
+            self.else_body = None # StatementContext
+
+        def expression(self):
+            return self.getTypedRuleContext(LanguageParser.ExpressionContext,0)
+
 
         def statement(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(LanguageParser.StatementContext)
             else:
                 return self.getTypedRuleContext(LanguageParser.StatementContext,i)
-
-
-        def expression(self):
-            return self.getTypedRuleContext(LanguageParser.ExpressionContext,0)
 
 
         def getRuleIndex(self):
@@ -683,7 +685,7 @@ class LanguageParser ( Parser ):
             self.state = 88
             self.match(LanguageParser.T__8)
             self.state = 89
-            self.statement()
+            localctx.if_body = self.statement()
             self.state = 92
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
@@ -691,7 +693,7 @@ class LanguageParser ( Parser ):
                 self.state = 90
                 self.match(LanguageParser.T__9)
                 self.state = 91
-                self.statement()
+                localctx.else_body = self.statement()
 
 
         except RecognitionException as re:
