@@ -133,8 +133,7 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         type_left, type_right = self.resolve_left_right_types(left, right)
         if type_ := self.binary_operations_table.get(
-                (type_left, type_right, ctx.op.type)
-        ):
+                (type_left, type_right, ctx.op.type)):
             self.context_dict[ctx] = type_
             return type_
 

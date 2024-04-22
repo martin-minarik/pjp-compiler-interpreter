@@ -11,8 +11,8 @@ class VirtualMachine:
         with open(code_filepath, "r") as file:
             self.instructions = file.read().split("\n")
 
-        self.stack: deque[tuple[Type, Any]] = deque()
         self.instruction_pointer = 0
+        self.stack: deque[tuple[Type, Any]] = deque()
         self.variable_table: dict[str, tuple[Type, Any]] = {}
         self.jump_table: dict[int, int] = {}
         self.fill_jump_table()
@@ -103,35 +103,28 @@ class VirtualMachine:
 
             self.instruction_pointer += 1
 
-    def push_instruction(self, type_: str, literal: str):
+    def push_to_stack(self, type_: str, value: str):
         match type_:
             case "I":
-                self.stack.appendleft((Type.Int, int(literal)))
+                self.stack.appendleft((Type.Int, int(value)))
             case "F":
-                self.stack.appendleft((Type.Float, float(literal)))
+                self.stack.appendleft((Type.Float, float(value)))
             case "B":
-                self.stack.appendleft((Type.Bool, literal == "true"))
+                self.stack.appendleft((Type.Bool, value == "true"))
             case "S":
-                self.stack.appendleft((Type.String, literal))
+                self.stack.appendleft((Type.String, value))
             case _:
                 raise ValueError(f"Invalid type [{self.instruction_pointer}]")
+
+    def push_instruction(self, type_: str, literal: str):
+        self.push_to_stack(type_, literal)
 
     def print_instruction(self, number: str):
         print(*[self.stack.popleft()[1] for n in range(int(number))][::-1])
 
     def read_instruction(self, type_: str):
         input_ = input(f"Enter({type_}):")
-        match type_:
-            case "I":
-                self.stack.appendleft((Type.Int, int(input_)))
-            case "F":
-                self.stack.appendleft((Type.Float, float(input_)))
-            case "B":
-                self.stack.appendleft((Type.Bool, input_ == "true"))
-            case "S":
-                self.stack.appendleft((Type.String, input_))
-            case _:
-                raise ValueError(f"Invalid type [{self.instruction_pointer}]")
+        self.push_to_stack(type_, input_)
 
     def save_instruction(self, variable: str):
         self.variable_table[variable] = self.stack.popleft()
