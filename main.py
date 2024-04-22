@@ -11,6 +11,7 @@ from output_visitor import OutputVisitor
 from stop_parsing_error_listener import StopParsingListener
 from typecheck_visitor import TypeCheckingVisitor
 from verbose_error_listener import VerboseErrorListener
+from virtual_machine import VirtualMachine
 
 
 def main(argv):
@@ -41,14 +42,20 @@ def main(argv):
             return
         else:
             print("Type Checking is Ok")
-            print("OutputVisitor:")
-            output_visitor = OutputVisitor(typecheck_visitor.symbol_table)
+            print()
+            output_visitor = OutputVisitor(typecheck_visitor.symbol_table, typecheck_visitor.context_dict)
             output = output_visitor.visit(tree)
             output_str = "\n".join(output)
+            print("OutputVisitor:")
             print(output_str)
 
             with open("output.txt", "w") as file:
                 file.write(output_str)
+
+            # print("#" * 30)
+            # print("VIRTUAL MACHINE")
+            # vm = VirtualMachine("output.txt")
+            # vm.run()
 
 
 if __name__ == "__main__":

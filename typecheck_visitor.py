@@ -1,7 +1,7 @@
 from antlr4.tree.Tree import TerminalNodeImpl
 
 from errors import Errors
-from language.LanguageParser import LanguageParser
+from language.LanguageParser import LanguageParser, ParserRuleContext
 from language.LanguageVisitor import LanguageVisitor
 from symbol_table import SymbolTable
 from type_enum import Type
@@ -22,6 +22,7 @@ class TypeCheckingVisitor(LanguageVisitor):
             (Type.Float, Type.Float, LanguageParser.SUB): Type.Float,
             (Type.String, Type.String, LanguageParser.CONCAT): Type.String,
         }
+        self.context_dict: dict[ParserRuleContext, Type] = {}
 
     def visitType_keyword(self, ctx: LanguageParser.Type_keywordContext):
         match ctx.getText():
@@ -73,7 +74,7 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         return Type.Error
 
-    def visitFor_loop(self, ctx:LanguageParser.For_loopContext):
+    def visitFor_loop(self, ctx: LanguageParser.For_loopContext):
         self.visit(ctx.expression()[0])
         condition = self.visit(ctx.expression()[1])
         self.visit(ctx.expression()[2])
@@ -84,22 +85,26 @@ class TypeCheckingVisitor(LanguageVisitor):
                 f"Invalid condition. Should an expression with a type bool!",
             )
 
-
     def visitIntLiteral(self, ctx: LanguageParser.IntLiteralContext):
+        self.context_dict[ctx] = Type.Int
         return Type.Int
 
     def visitFloatLiteral(self, ctx: LanguageParser.FloatLiteralContext):
+        self.context_dict[ctx] = Type.Float
         return Type.Float
 
     def visitBoolLiteral(self, ctx: LanguageParser.BoolLiteralContext):
+        self.context_dict[ctx] = Type.Bool
         return Type.Bool
 
     def visitStringLiteral(self, ctx: LanguageParser.StringLiteralContext):
+        self.context_dict[ctx] = Type.String
         return Type.String
 
     def visitLogicalNot(self, ctx: LanguageParser.LogicalNotContext):
         variable = self.visit(ctx.expression())
         if variable == Type.Bool:
+            self.context_dict[ctx] = Type.Bool
             return Type.Bool
 
         Errors.report_error(
@@ -110,9 +115,10 @@ class TypeCheckingVisitor(LanguageVisitor):
         return Type.Error
 
     def visitUnaryMinus(self, ctx: LanguageParser.UnaryMinusContext):
-        variable = self.visit(ctx.expression())
-        if variable in (Type.Int, Type.Float):
-            return variable
+        variable_type = self.visit(ctx.expression())
+        if variable_type in (Type.Int, Type.Float):
+            self.context_dict[ctx] = variable_type
+            return variable_type
 
         Errors.report_error(
             ctx.prefix,
@@ -129,6 +135,7 @@ class TypeCheckingVisitor(LanguageVisitor):
         if type_ := self.binary_operations_table.get(
                 (type_left, type_right, ctx.op.type)
         ):
+            self.context_dict[ctx] = type_
             return type_
 
         Errors.report_error(ctx.op, f"Invalid operation. \"{left.name} {ctx.op.text} {right.name}\"")
@@ -146,6 +153,7 @@ class TypeCheckingVisitor(LanguageVisitor):
         if type_ := self.binary_operations_table.get(
                 (type_left, type_right, ctx.op.type)
         ):
+            self.context_dict[ctx] = type_
             return type_
 
         Errors.report_error(ctx.op, f"Invalid operation. \"{left.name} {ctx.op.text} {right.name}\"")
@@ -159,6 +167,7 @@ class TypeCheckingVisitor(LanguageVisitor):
             return Type.Error
 
         if (left in (Type.Int, Type.Float)) and (right in (Type.Int, Type.Float)):
+            self.context_dict[ctx] = Type.Bool
             return Type.Bool
 
         Errors.report_error(
@@ -174,6 +183,7 @@ class TypeCheckingVisitor(LanguageVisitor):
 
         left_type, right_type = self.resolve_left_right_types(left, right)
         if left_type == right_type:
+            self.context_dict[ctx] = Type.Bool
             return Type.Bool
 
         Errors.report_error(
@@ -190,6 +200,7 @@ class TypeCheckingVisitor(LanguageVisitor):
             return Type.Error
 
         if (left == Type.Bool) and (right == Type.Bool):
+            self.context_dict[ctx] = Type.Bool
             return Type.Bool
 
         Errors.report_error(
@@ -206,6 +217,7 @@ class TypeCheckingVisitor(LanguageVisitor):
             return Type.Error
 
         if (left == Type.Bool) and (right == Type.Bool):
+            self.context_dict[ctx] = Type.Bool
             return Type.Bool
 
         Errors.report_error(
@@ -223,7 +235,9 @@ class TypeCheckingVisitor(LanguageVisitor):
         return Type.Error
 
     def visitParentheses(self, ctx: LanguageParser.ParenthesesContext):
-        return self.visit(ctx.expression())
+        type_ = self.visit(ctx.expression())
+        self.context_dict[ctx] = type_
+        return type_
 
     def visitId(self, ctx: LanguageParser.IdContext):
         return self.symbol_table[ctx.IDENTIFIER().symbol]
