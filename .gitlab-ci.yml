@@ -1,26 +1,26 @@
 image: python:3.12
 
 check_py_syntax:
-  stage: lint
+  stage: test
   script:
     - find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +
 
 black:
-  stage: lint
+  stage: test
   before_script:
     - pip install black
   script:
     - black --check .
 
 isort:
-  stage: lint
+  stage: test
   before_script:
     - pip install isort
   script:
     - isort --check-only .
 
 pymarkdownlnt:
-  stage: lint
+  stage: test
   before_script:
     - pip install pymarkdownlnt
   script:
