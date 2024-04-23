@@ -1,6 +1,6 @@
 image: python:3.12
 
-check_py_syntax:
+py_compile:
   stage: test
   script:
     - find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +
