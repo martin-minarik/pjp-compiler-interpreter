@@ -1,0 +1,43 @@
+site_name: SSP Final Project docs
+site_author: Martin Minařík, MIN0139
+
+# Copyright
+copyright: Copyright &copy; 2023
+
+# Repository
+repo_name: SSP Final Project
+repo_url: https://gitlab.com/martin-minarik/ssp-final-project
+
+
+theme:
+  name: material
+  language: en
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.sections
+    - navigation.tabs
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - toc:
+      permalink: true
+  - pymdownx.critic:
+      mode: view
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
+
+nav:
+  - General: index.md
+
+
