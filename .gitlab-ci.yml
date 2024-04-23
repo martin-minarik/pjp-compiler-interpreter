@@ -1,9 +1,29 @@
-image: python:3.8
+image: python:3.12
 
-markdown-lint:
-  stage: test
+check_py_syntax:
+  stage: lint
   script:
+    - find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +
+
+black:
+  stage: lint
+  before_script:
+    - pip install black
+  script:
+    - black --check .
+
+isort:
+  stage: lint
+  before_script:
+    - pip install isort
+  script:
+    - isort --check-only .
+
+pymarkdownlnt:
+  stage: lint
+  before_script:
     - pip install pymarkdownlnt
+  script:
     - pymarkdown scan docs/
 
 pages:
