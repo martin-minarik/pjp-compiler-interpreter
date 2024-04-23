@@ -19,6 +19,14 @@ isort:
   script:
     - isort --check-only .
 
+antl4:
+  stage: test
+  before_script:
+    - pip install antlr4-tools
+    - antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
+    - rm -r antlr_check/
+
+
 pymarkdownlnt:
   stage: test
   before_script:
@@ -37,6 +45,8 @@ pages:
     - pwd
   script:
     - mkdocs build
+  only:
+    - main
   artifacts:
     paths:
     - site
@@ -45,5 +55,4 @@ pages:
     paths:
       - .cache/pip
       - venv
-
 
