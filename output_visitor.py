@@ -7,7 +7,13 @@ from type_enum import Type
 
 
 class OutputVisitor(LanguageVisitor):
-    def __init__(self, symbol_table: SymbolTable, context_dict: dict[ParserRuleContext, Type], *args, **kwargs):
+    def __init__(
+        self,
+        symbol_table: SymbolTable,
+        context_dict: dict[ParserRuleContext, Type],
+        *args,
+        **kwargs,
+    ):
         super().__init__(*args, **kwargs)
         self.symbol_table = symbol_table
         self.context_dict = context_dict
@@ -26,7 +32,7 @@ class OutputVisitor(LanguageVisitor):
 
     def resolve_itof_binary_op(self, left: ParserRuleContext, right: ParserRuleContext):
         if isinstance(left, LanguageParser.IntLiteralContext) and isinstance(
-                right, LanguageParser.FloatLiteralContext
+            right, LanguageParser.FloatLiteralContext
         ):
             self.output_list.append("itof")
 
@@ -96,10 +102,14 @@ class OutputVisitor(LanguageVisitor):
         right = ctx.expression()[1]
 
         self.visit(left)
-        self.resolve_itof_binary_op_type(self.context_dict.get(left), self.context_dict.get(right))
+        self.resolve_itof_binary_op_type(
+            self.context_dict.get(left), self.context_dict.get(right)
+        )
 
         self.visit(right)
-        self.resolve_itof_binary_op_type(self.context_dict.get(right), self.context_dict.get(left))
+        self.resolve_itof_binary_op_type(
+            self.context_dict.get(right), self.context_dict.get(left)
+        )
 
         match ctx.op.type:
             case LanguageParser.MUL:
@@ -114,10 +124,14 @@ class OutputVisitor(LanguageVisitor):
         right = ctx.expression()[1]
 
         self.visit(left)
-        self.resolve_itof_binary_op_type(self.context_dict.get(left), self.context_dict.get(right))
+        self.resolve_itof_binary_op_type(
+            self.context_dict.get(left), self.context_dict.get(right)
+        )
 
         self.visit(right)
-        self.resolve_itof_binary_op_type(self.context_dict.get(right), self.context_dict.get(left))
+        self.resolve_itof_binary_op_type(
+            self.context_dict.get(right), self.context_dict.get(left)
+        )
 
         match ctx.op.type:
             case LanguageParser.ADD:
@@ -131,10 +145,14 @@ class OutputVisitor(LanguageVisitor):
         left = ctx.expression()[0]
         right = ctx.expression()[1]
         self.visit(left)
-        self.resolve_itof_binary_op_type(self.context_dict.get(left), self.context_dict.get(right))
+        self.resolve_itof_binary_op_type(
+            self.context_dict.get(left), self.context_dict.get(right)
+        )
 
         self.visit(right)
-        self.resolve_itof_binary_op_type(self.context_dict.get(right), self.context_dict.get(left))
+        self.resolve_itof_binary_op_type(
+            self.context_dict.get(right), self.context_dict.get(left)
+        )
 
         match ctx.op.type:
             case LanguageParser.LT:
@@ -212,7 +230,8 @@ class OutputVisitor(LanguageVisitor):
 
         # itof
         if self.symbol_table[ctx.IDENTIFIER().symbol] == Type.Float and (
-                self.context_dict[ctx.expression()] == Type.Int):
+            self.context_dict[ctx.expression()] == Type.Int
+        ):
             self.output_list.append("itof")
 
         self.output_list.append(f"save {ctx.IDENTIFIER().getText()}")

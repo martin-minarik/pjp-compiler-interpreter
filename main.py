@@ -43,7 +43,9 @@ def main(argv):
         else:
             print("Type Checking is Ok")
             print()
-            output_visitor = OutputVisitor(typecheck_visitor.symbol_table, typecheck_visitor.context_dict)
+            output_visitor = OutputVisitor(
+                typecheck_visitor.symbol_table, typecheck_visitor.context_dict
+            )
             output = output_visitor.visit(tree)
             output_str = "\n".join(output)
             print("OutputVisitor:")

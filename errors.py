@@ -1,5 +1,5 @@
-from antlr4.Token import Token
 from antlr4.ParserRuleContext import ParserRuleContext
+from antlr4.Token import Token
 
 
 class Errors:
@@ -11,7 +11,9 @@ class Errors:
 
     @staticmethod
     def report_error_rule_context(rule_context: ParserRuleContext, message):
-        Errors.errors_data.append(f"{rule_context.start.line}:{rule_context.start.column} - {message}")
+        Errors.errors_data.append(
+            f"{rule_context.start.line}:{rule_context.start.column} - {message}"
+        )
 
     @staticmethod
     def number_of_errors():
