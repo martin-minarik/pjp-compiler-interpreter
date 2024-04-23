@@ -24,7 +24,7 @@ antl4r:
   before_script:
     - pip install antlr4-tools
   script:
-    - antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
+    - antlr4 -Dlanguage=Python3 -o antlr_check -no-listener -no-visitor language/Language.g4
     - rm -r antlr_check/
 
 
