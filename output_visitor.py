@@ -33,6 +33,8 @@ class OutputVisitor(LanguageVisitor):
     def resolve_itof_binary_op_type(self, left: Type, right: Type):
         if (left == Type.Int) and (right == Type.Float):
             self.output_list.append("itof")
+            return True
+        return False
 
     def visitIntLiteral(self, ctx: LanguageParser.IntLiteralContext):
         self.output_list.append(f"push I {ctx.INT_LITERAL().getText()}")
@@ -129,16 +131,16 @@ class OutputVisitor(LanguageVisitor):
         left = ctx.expression()[0]
         right = ctx.expression()[1]
         self.visit(left)
-        self.resolve_itof_binary_op_type(self.context_dict[left], self.context_dict[right])
+        self.resolve_itof_binary_op_type(self.context_dict.get(left), self.context_dict.get(right))
 
         self.visit(right)
-        self.resolve_itof_binary_op_type(self.context_dict[right], self.context_dict[left])
+        self.resolve_itof_binary_op_type(self.context_dict.get(right), self.context_dict.get(left))
 
         match ctx.op.type:
             case LanguageParser.LT:
-                self.output_list.append("lt")
+                self.output_list.append(f"lt")
             case LanguageParser.GT:
-                self.output_list.append("gt")
+                self.output_list.append(f"gt")
 
     def visitEqualNotEqual(self, ctx: LanguageParser.MulDivModContext):
         left = ctx.expression()[0]
