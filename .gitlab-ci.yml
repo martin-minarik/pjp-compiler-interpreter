@@ -21,7 +21,7 @@ isort:
 
 antl4r:
   stage: test
-  image: antlr/antlr4
+  image: petervaczi/antlr:latest
   script:
     - antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
     - rm -r antlr_check/
