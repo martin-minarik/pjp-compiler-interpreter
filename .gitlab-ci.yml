@@ -21,10 +21,9 @@ isort:
 
 antl4r:
   stage: test
-  before_script:
-    - pip install antlr4-tools
+  image: antlr/antlr4
   script:
-    - antlr4 -Dlanguage=Python3 -o antlr_check -no-listener -no-visitor language/Language.g4
+    - antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
     - rm -r antlr_check/
 
 
