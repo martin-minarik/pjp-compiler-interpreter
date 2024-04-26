@@ -120,10 +120,15 @@ class VirtualMachine:
         self.push_to_stack(type_, literal)
 
     def print_instruction(self, number: str):
-        type_, value = self.stack.popleft()
-        if type_ == Type.Float:
-            value = round(value, 2)
-        print(*[value for n in range(int(number))][::-1])
+        buffer = []
+        for n in range(int(number)):
+            type_, value = self.stack.popleft()
+            if type_ == Type.Float:
+                value = round(value, 2)
+
+            buffer.append(value)
+
+        print(*buffer[::-1])
 
     def read_instruction(self, type_: str):
         input_ = input(f"Enter({type_}):")
