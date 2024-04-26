@@ -1,5 +1,6 @@
 from antlr4.ParserRuleContext import ParserRuleContext
 from antlr4.Token import Token
+import sys
 
 
 class Errors:
@@ -22,5 +23,5 @@ class Errors:
     @staticmethod
     def print_and_clear_errors():
         for error in Errors.errors_data:
-            print(error)
+            print(error, file=sys.stderr)
         Errors.errors_data.clear()
