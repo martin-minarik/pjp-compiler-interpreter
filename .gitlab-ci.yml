@@ -2,7 +2,7 @@ image: python:3.12
 
 stages:
   - lint
-  - pages
+  - deploy
 
 py_compile:
   stage: lint
@@ -38,6 +38,7 @@ pymarkdownlnt:
     - pymarkdown --disable-rules md013 scan docs/
 
 pages:
+  stage: deploy
   before_script:
     - python -V
     - pip install virtualenv
