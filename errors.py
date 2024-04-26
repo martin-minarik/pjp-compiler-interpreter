@@ -1,6 +1,7 @@
+import sys
+
 from antlr4.ParserRuleContext import ParserRuleContext
 from antlr4.Token import Token
-import sys
 
 
 class Errors:

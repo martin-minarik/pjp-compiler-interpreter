@@ -49,10 +49,16 @@ def compile_code(input_filepath: str, verbose=False) -> Optional[str]:
 def get_arg_parser():
     arg_parser = argparse.ArgumentParser()
 
-    arg_parser.add_argument('input_file', help='Input file path')
-    arg_parser.add_argument("-o", "--output_file", default=os.path.join(os.getcwd(),
-                                                                        "output_instructions.txt"))
-    arg_parser.add_argument("--no_output_file", dest="output_file_flag", action="store_false")
+    arg_parser.add_argument("input_file", type=str, help="Input file path")
+    arg_parser.add_argument(
+        "-o",
+        "--output_file",
+        type=str,
+        default=os.path.join(os.getcwd(), "output_instructions.txt"),
+    )
+    arg_parser.add_argument(
+        "--no_output_file", dest="output_file_flag", action="store_false"
+    )
     arg_parser.add_argument("-v", "--verbose", action="store_true")
 
     arg_parser.add_argument("-i", "--interpret", action="store_true")
@@ -73,7 +79,9 @@ def main() -> None:
 
         # Interpret instructions
         if args.interpret:
-            with tempfile.NamedTemporaryFile(mode='w', delete_on_close=False) as temp_file:
+            with tempfile.NamedTemporaryFile(
+                mode="w", delete_on_close=False
+            ) as temp_file:
                 temp_file.write(output_instructions)
                 temp_file.close()
 

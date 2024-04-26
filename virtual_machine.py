@@ -207,8 +207,12 @@ class VirtualMachine:
 def get_arg_parser():
     arg_parser = argparse.ArgumentParser()
 
-    arg_parser.add_argument('input_file', nargs="?", help='Input file path',
-                            default=os.path.join(os.getcwd(), "output_instructions.txt"))
+    arg_parser.add_argument(
+        "input_file",
+        nargs="?",
+        help="Input file path",
+        default=os.path.join(os.getcwd(), "output_instructions.txt"),
+    )
 
     return arg_parser
 
