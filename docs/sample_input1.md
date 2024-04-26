@@ -2,7 +2,7 @@
 
 ## Sample Input
 
-```
+```text
 write "<Constants>";
 write "10: ",10;
 write " 1.25: ", 1.25;
@@ -64,7 +64,7 @@ write "a,b,c,e: ", a, ",", b, ",", c, ",",e;
 
 ## Generated instructions
 
-```
+```text
 push S "<Constants>"
 print 1
 push S "10: "

@@ -24,11 +24,11 @@ python main.py code.txt
 ```
 
 - **options:**
-    - `-o`, `--output_file`
+  - `-o`, `--output_file`
     - `--no_output_file`
     - `-v`, `--verbose`
     - `-i`, `--interpret`
-        - automatically runs virtual machine
+      - automatically runs virtual machine
     - `-h`, `--help`
 
 ### virtual_machine.py
@@ -40,26 +40,24 @@ python virtual_machine.py instructions.txt
 ## Chore
 
 - Recompile antlr4 grammar
-    - `antlr4 -Dlanguage=Python3 language/Language.g4 -visitor`
+  - `antlr4 -Dlanguage=Python3 language/Language.g4 -visitor`
 
 ## Hodnotící kritéria (CZ)
 
 Požadavky na kvalitu práce:
 
-* [x] GIT repozitář na Gitlabu.
-    * [x] Repozitář má README.md (K čemu projekt slouží, jak se používá, jak se instaluje, jaké jsou prerekvizity,
-      apod.)
-* [x] Použití vlastního projektu (ideální kandidát má kombinaci jazyků - např. Python a BASH, Markdown a JS, apod.)
-* [x] Vytvořená CI v repozitáři.
-* [x] CI má minimálně tři úlohy:
-    * [x] Test kvality Markdown stránek. (Kvalita dokumentace je důležitá. Minimálně README.md by mělo být v repozitáři
-      dostupné.)
-    * [x] Kontrola syntaxe každého jazyka.
-    * [x] Použití "lint" nástroje pro každý jazyk.
-* [ ] (Volitelné/doporučené) Nástroj na kontrolu dostupnosti aktualizací/security updates pro moduly jazyka (pokud
+- [x] GIT repozitář na Gitlabu.
+  - [x] Repozitář má README.md (K čemu projekt slouží, jak se používá, jak se instaluje, jaké jsou prerekvizity,
+    apod.)
+- [x] Použití vlastního projektu (ideální kandidát má kombinaci jazyků - např. Python a BASH, Markdown a JS, apod.)
+- [x] Vytvořená CI v repozitáři.
+- [x] CI má minimálně tři úlohy:
+  - [x] Test kvality Markdown stránek. (Kvalita dokumentace je důležitá. Minimálně README.md by mělo být v repozitáři
+    dostupné.)
+    - [x] Kontrola syntaxe každého jazyka.
+    - [x] Použití "lint" nástroje pro každý jazyk.
+- [ ] (Volitelné/doporučené) Nástroj na kontrolu dostupnosti aktualizací/security updates pro moduly jazyka (pokud
   existuje).
-* [ ] (Volitelné/doporučené) Nástroj na kontrolu testů/code coverage (pokud existuje).
-* [ ] (Volitelné/doporučené) Pokud některé nástroje umí generovat HTML reporty - umistěte je na Gitlab pages.
-* [ ] (Volitelné/doporučené) Repozitář obsahuje šablonu ticketu.
-
-
+- [ ] (Volitelné/doporučené) Nástroj na kontrolu testů/code coverage (pokud existuje).
+- [ ] (Volitelné/doporučené) Pokud některé nástroje umí generovat HTML reporty - umistěte je na Gitlab pages.
+- [ ] (Volitelné/doporučené) Repozitář obsahuje šablonu ticketu.

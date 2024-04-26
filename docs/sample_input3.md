@@ -2,14 +2,14 @@
 
 ## Sample Input
 
-```
+```text
 if (3<4) write "condition was true";
 else write "condition was false";
 
 if (true) {
-	write "inside";
-	write "second";
-	write "if";
+    write "inside";
+    write "second";
+    write "if";
 }
 
 int a,b;
@@ -31,7 +31,7 @@ while(a<b) {
 
 ## Generated instructions
 
-```
+```text
 push I 3
 push I 4
 lt

@@ -2,7 +2,7 @@
 
 ## Sample Input
 
-```
+```text
 write "<Relational operators>";
 write "1<5: ", 1 < 5;
 write "1>3.5: ", 1 > 3.5;
@@ -19,7 +19,7 @@ write "true or false and true (true):", true || false && true;
 
 ## Generated instructions
 
-```
+```text
 push S "<Relational operators>"
 print 1
 push S "1<5: "

@@ -27,4 +27,3 @@
 | `fjmp n`    | Instruction takes boolean value from the stack and if it is `false`, it will perform a jump to a label with unique number `n`                                         |
 | `print n`   | Instruction takes `n` values from stack and prints them on standard output                                                                                            |
 | `read T`    | Instruction reads value of type `T` (`I - int`, `F - float`, `S - string`, `B - bool`) from standard input and stores it on the stack                                 |
-
