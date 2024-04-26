@@ -1,3 +1,5 @@
+import argparse
+import os
 import shlex
 import sys
 from collections import deque
@@ -202,10 +204,22 @@ class VirtualMachine:
         self.stack.appendleft((Type.Bool, not item[1]))
 
 
-def main(argv):
-    vm = VirtualMachine("output.txt")
+def get_arg_parser():
+    arg_parser = argparse.ArgumentParser()
+
+    arg_parser.add_argument('input_file', nargs="?", help='Input file path',
+                            default=os.path.join(os.getcwd(), "output_instructions.txt"))
+
+    return arg_parser
+
+
+def main():
+    arg_parser = get_arg_parser()
+    args = arg_parser.parse_args()
+
+    vm = VirtualMachine(args.input_file)
     vm.run()
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main()

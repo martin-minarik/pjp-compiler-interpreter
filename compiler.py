@@ -1,64 +1,87 @@
+import argparse
+import os
 import sys
-from pprint import pprint
+import tempfile
+from typing import Optional
 
 from antlr4 import *
-from antlr4.tree.Trees import Trees
 
 from errors import Errors
 from language.LanguageLexer import LanguageLexer
 from language.LanguageParser import LanguageParser
 from output_visitor import OutputVisitor
-from stop_parsing_error_listener import StopParsingListener
 from typecheck_visitor import TypeCheckingVisitor
-from verbose_error_listener import VerboseErrorListener
 from virtual_machine import VirtualMachine
 
 
-def main(argv):
-    input_stream = FileStream(argv[1])
+def compile_code(input_filepath: str, verbose=False) -> Optional[str]:
+    input_stream = FileStream(input_filepath)
     lexer = LanguageLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = LanguageParser(stream)
-
-    # Error listeners
-    # parser.removeErrorListeners()  # Remove default error listeners
-    # parser.addErrorListener(VerboseErrorListener())
-    # parser.addErrorListener(StopParsingListener())
-
     tree = parser.program()
 
     if parser.getNumberOfSyntaxErrors() > 0:
         print("syntax errors")
     else:
-        print("Grammar is Ok")
+        if verbose:
+            print("Grammar is Ok")
 
         typecheck_visitor = TypeCheckingVisitor()
         typecheck_visitor.visit(tree)
-
-        # pprint(visitor.symbol_table.memory)
 
         if Errors.number_of_errors():
             Errors.print_and_clear_errors()
             return
         else:
-            print("Type Checking is Ok")
-            print()
+            if verbose:
+                print("Type Checking is Ok")
+
             output_visitor = OutputVisitor(
                 typecheck_visitor.symbol_table, typecheck_visitor.context_dict
             )
             output = output_visitor.visit(tree)
             output_str = "\n".join(output)
-            print("OutputVisitor:")
-            print(output_str)
 
-            with open("output.txt", "w") as file:
-                file.write(output_str)
+            return output_str
 
-            # print("#" * 30)
-            # print("VIRTUAL MACHINE")
-            # vm = VirtualMachine("output.txt")
-            # vm.run()
+
+def get_arg_parser():
+    arg_parser = argparse.ArgumentParser()
+
+    arg_parser.add_argument('input_file', help='Input file path')
+    arg_parser.add_argument("-o", "--output_file", default=os.path.join(os.getcwd(),
+                                                                        "output_instructions.txt"))
+    arg_parser.add_argument("--no_output_file", dest="output_file_flag", action="store_false")
+    arg_parser.add_argument("-v", "--verbose", action="store_true")
+
+    arg_parser.add_argument("-i", "--interpret", action="store_true")
+
+    return arg_parser
+
+
+def main() -> None:
+    arg_parser = get_arg_parser()
+    args = arg_parser.parse_args()
+
+    output_instructions = compile_code(args.input_file, args.verbose)
+    if output_instructions:  # Compile
+        # Save instructions
+        if args.output_file_flag:
+            with open(args.output_file, "w") as file:
+                file.write(output_instructions)
+
+        # Interpret instructions
+        if args.interpret:
+            with tempfile.NamedTemporaryFile(mode='w', delete_on_close=False) as temp_file:
+                temp_file.write(output_instructions)
+                temp_file.close()
+
+                print("#" * 15)
+                print("Virtual Machine:")
+                vm = VirtualMachine(temp_file.name)
+                vm.run()
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main()
