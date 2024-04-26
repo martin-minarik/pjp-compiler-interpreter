@@ -2,6 +2,7 @@ image: python:3.12
 
 stages:
   - lint
+  - pages
 
 py_compile:
   stage: lint
