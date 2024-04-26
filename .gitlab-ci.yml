@@ -1,40 +1,38 @@
 image: python:3.12
 
-stages:
-  - lint
-
 py_compile:
-  stage: lint
+  stage: test
   script:
     - find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +
 
 black:
-  stage: lint
+  stage: test
   before_script:
     - pip install black
   script:
     - black --check .
 
 isort:
-  stage: lint
+  stage: test
   before_script:
     - pip install isort
   script:
     - isort --check-only .
 
 antl4r:
-  stage: lint
+  stage: test
   image: danistomi/antlr4
   script:
     - antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
     - rm -r antlr_check/
 
+
 pymarkdownlnt:
-  stage: lint
+  stage: test
   before_script:
     - pip install pymarkdownlnt
   script:
-    - pymarkdown --disable-rules md013 scan docs/
+    - pymarkdown scan docs/
 
 pages:
   before_script:
