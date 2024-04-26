@@ -36,8 +36,14 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.superfences
   - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 nav:
-  - General: index.md
-
-
+  - Readme: README_link.md
+  - Sample inputs:
+      - sample1: sample_input1.md
+      - sample2: sample_input2.md
+      - sample3: sample_input3.md
+  - Language specification: language_specification.md
+  - Instruction set: instruction_set.md
