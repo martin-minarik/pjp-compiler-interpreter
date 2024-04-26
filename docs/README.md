@@ -15,6 +15,15 @@ The project also includes an interpreter that executes these instructions.
 pip install -r requirements.txt
 ```
 
+### Dependencies
+
+- [MkDocs](https://github.com/mkdocs/mkdocs)
+- [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
+- [PyMarkdown](https://github.com/jackdewinter/pymarkdown)
+- [antlr4](https://github.com/antlr/antlr4)
+- [black](https://github.com/psf/black)
+- [isort](https://github.com/PyCQA/isort)
+
 ## Usage
 
 ### compile.py
@@ -25,11 +34,11 @@ python main.py code.txt
 
 - **options:**
   - `-o`, `--output_file`
-    - `--no_output_file`
-    - `-v`, `--verbose`
-    - `-i`, `--interpret`
-      - automatically runs virtual machine
-    - `-h`, `--help`
+  - `--no_output_file`
+  - `-v`, `--verbose`
+  - `-i`, `--interpret`
+    - automatically runs virtual machine
+  - `-h`, `--help`
 
 ### virtual_machine.py
 
@@ -54,8 +63,8 @@ Požadavky na kvalitu práce:
 - [x] CI má minimálně tři úlohy:
   - [x] Test kvality Markdown stránek. (Kvalita dokumentace je důležitá. Minimálně README.md by mělo být v repozitáři
     dostupné.)
-    - [x] Kontrola syntaxe každého jazyka.
-    - [x] Použití "lint" nástroje pro každý jazyk.
+  - [x] Kontrola syntaxe každého jazyka.
+  - [x] Použití "lint" nástroje pro každý jazyk.
 - [ ] (Volitelné/doporučené) Nástroj na kontrolu dostupnosti aktualizací/security updates pro moduly jazyka (pokud
   existuje).
 - [ ] (Volitelné/doporučené) Nástroj na kontrolu testů/code coverage (pokud existuje).
