@@ -50,9 +50,9 @@ pages:
     - mkdocs --version
     - pwd
   script:
-    - mkdocs build
     - pytest --cov=. --cov-report html:site/htmlcov
     - pytest --html=site/htmlcov/report.html
+    - mkdocs build
   only:
     - main
   artifacts:
