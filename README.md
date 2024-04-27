@@ -19,12 +19,16 @@ pip install -r requirements.txt
 
 ### Dependencies
 
-- [MkDocs](https://github.com/mkdocs/mkdocs)
-- [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
-- [PyMarkdown](https://github.com/jackdewinter/pymarkdown)
 - [antlr4](https://github.com/antlr/antlr4)
 - [black](https://github.com/psf/black)
 - [isort](https://github.com/PyCQA/isort)
+- [pytest](https://github.com/PyCQA/isort)
+- [pytest-cov](https://github.com/PyCQA/isort)
+- [pytest-html](https://github.com/PyCQA/isort)
+- [PyMarkdown](https://github.com/jackdewinter/pymarkdown)
+- [MkDocs](https://github.com/mkdocs/mkdocs)
+- [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
+- [mkdocs-minify-plugin](https://github.com/squidfunk/mkdocs-material)
 
 ## Usage
 
