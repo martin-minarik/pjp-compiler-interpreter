@@ -3,6 +3,7 @@ image: python:3.12
 stages:
   - lint
   - deploy
+  - coverage
 
 py_compile:
   stage: lint
@@ -64,6 +65,7 @@ pages:
       - venv
 
 codecov:
+  stage: coverage
   before_script:
     - pip install pytest-html pytest-cov
   script:
