@@ -2,7 +2,11 @@ antlr4-python3-runtime==4.13.1
 antlr4-tools==0.2.1
 black==24.3.0
 isort==5.13.2
+pymarkdownlnt==0.9.18
 mkdocs-get-deps==0.2.0
 mkdocs-material==9.5.17
 mkdocs-minify-plugin==0.8.0
 pip-chill==1.0.3
+pytest==8.1.2
+pytest-cov==5.0.0
+pytest-html==4.1.1
