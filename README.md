@@ -9,6 +9,8 @@ This project utilizes ANTLR for programming language processing. It focuses on p
 syntactic correctness and thorough type checking, and generating executable stack-based instructions.
 The project also includes an interpreter that executes these instructions.
 
+---
+
 ## Installation
 
 ```bash
@@ -50,6 +52,8 @@ python virtual_machine.py instructions.txt
 
 - Recompile antlr4 grammar
   - `antlr4 -Dlanguage=Python3 language/Language.g4 -visitor`
+
+---
 
 ## Hodnotící kritéria (CZ)
 

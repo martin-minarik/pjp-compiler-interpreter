@@ -9,6 +9,8 @@ This project utilizes ANTLR for programming language processing. It focuses on p
 syntactic correctness and thorough type checking, and generating executable stack-based instructions.
 The project also includes an interpreter that executes these instructions.
 
+---
+
 ## Installation
 
 ```bash
@@ -51,6 +53,8 @@ python virtual_machine.py instructions.txt
 - Recompile antlr4 grammar
   - `antlr4 -Dlanguage=Python3 language/Language.g4 -visitor`
 
+---
+
 ## Hodnotící kritéria (CZ)
 
 Požadavky na kvalitu práce:
@@ -67,6 +71,6 @@ Požadavky na kvalitu práce:
   - [x] Použití "lint" nástroje pro každý jazyk.
 - [ ] (Volitelné/doporučené) Nástroj na kontrolu dostupnosti aktualizací/security updates pro moduly jazyka (pokud
   existuje).
-- [ ] (Volitelné/doporučené) Nástroj na kontrolu testů/code coverage (pokud existuje).
-- [ ] (Volitelné/doporučené) Pokud některé nástroje umí generovat HTML reporty - umistěte je na Gitlab pages.
-- [ ] (Volitelné/doporučené) Repozitář obsahuje šablonu ticketu.
+- [X] (Volitelné/doporučené) Nástroj na kontrolu testů/code coverage (pokud existuje).
+- [X] (Volitelné/doporučené) Pokud některé nástroje umí generovat HTML reporty - umistěte je na Gitlab pages.
+- [X] (Volitelné/doporučené) Repozitář obsahuje šablonu ticketu.
