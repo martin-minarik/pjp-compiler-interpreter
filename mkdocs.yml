@@ -47,4 +47,4 @@ nav:
       - sample3: sample_input3.md
   - Language specification: language_specification.md
   - Instruction set: instruction_set.md
-  - Coverage report: /ssp-final-project/htmlcov/
+  - Coverage report: /htmlcov/
