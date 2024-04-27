@@ -51,8 +51,8 @@ pages:
     - pwd
   script:
     - mkdocs build
-    - pytest --cov=. --cov-report html:site
-    - pytest --html=site/report.html
+    - pytest --cov=. --cov-report html:site/htmlcov
+    - pytest --html=site/htmlcov/report.html
   only:
     - main
   artifacts:
