@@ -16,20 +16,20 @@ def check_sample(code_filepath: str, reference_filepath: str) -> bool:
 
 def test_sample1() -> None:
     assert check_sample(
-        code_filepath=r"samples\PLC_t1.in.txt",
-        reference_filepath=r"samples\PLC_t1.out.txt",
+        code_filepath=r"samples/PLC_t1.in.txt",
+        reference_filepath=r"samples/PLC_t1.out.txt",
     )
 
 
 def test_sample2() -> None:
     assert check_sample(
-        code_filepath=r"samples\PLC_t2.in.txt",
-        reference_filepath=r"samples\PLC_t2.out.txt",
+        code_filepath=r"samples/PLC_t2.in.txt",
+        reference_filepath=r"samples/PLC_t2.out.txt",
     )
 
 
 def test_sample3() -> None:
     assert check_sample(
-        code_filepath=r"samples\PLC_t3.in.txt",
-        reference_filepath=r"samples\PLC_t3.out.txt",
+        code_filepath=r"samples/PLC_t3.in.txt",
+        reference_filepath=r"samples/PLC_t3.out.txt",
     )
