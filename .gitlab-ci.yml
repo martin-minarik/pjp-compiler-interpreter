@@ -45,17 +45,34 @@ pages:
     - virtualenv venv
     - source venv/bin/activate
     - pip install -r requirements-mkdocs-build.txt
+    - pip install pytest-html pytest-cov
     - mkdocs --version
     - pwd
   script:
     - mkdocs build
+    - pytest --cov=. --cov-report html:site
+    - pytest --html=site/report.html
   only:
     - main
   artifacts:
     paths:
-    - site
+      - site
   publish: site
   cache:
     paths:
       - .cache/pip
       - venv
+
+codecov:
+  before_script:
+    - pip install pytest-html pytest-cov
+  script:
+    - coverage run -m pytest
+    - coverage report
+    - coverage xml
+  coverage: '/^TOTAL\s+\d+\s+\d+\s+(\d+\%)/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
