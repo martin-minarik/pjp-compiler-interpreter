@@ -23,9 +23,6 @@ plugins:
   - search
   - minify:
       minify_html: true
-  - coverage:
-      page_name: coverage
-      html_report_dir: htmlcov
 
 markdown_extensions:
   - abbr
@@ -50,4 +47,4 @@ nav:
       - sample3: sample_input3.md
   - Language specification: language_specification.md
   - Instruction set: instruction_set.md
-  - Coverage report: coverage.md
+  - Coverage report: /htmlcov/
