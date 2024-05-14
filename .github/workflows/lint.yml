@@ -13,10 +13,9 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.12
-      - uses: psf/black@stable
-        with:
-          options: "--check --verbose"
-          use_pyproject: true
+      - run: |
+          pip install black
+          black --check .
 
   isort:
     runs-on: ubuntu-latest
@@ -39,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     
     container:
-      image: alvarofpp/antlr4
+      image: petervaczi/antlr
       
     steps:
     - run: |
