@@ -8,10 +8,11 @@ on:
 jobs:
   black:
     runs-on: ubuntu-latest
-    container:
-      image: python:3.12
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
       - uses: psf/black@stable
         with:
           options: "--check --verbose"
@@ -41,7 +42,6 @@ jobs:
       image: alvarofpp/antlr4
       
     steps:
-    - uses: actions/checkout@v3
     - run: |
         antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
         rm -r antlr_check/
