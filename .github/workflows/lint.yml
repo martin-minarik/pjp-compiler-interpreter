@@ -8,6 +8,8 @@ on:
 jobs:
   black:
     runs-on: ubuntu-latest
+    container:
+      image: python:3.12
     steps:
       - uses: actions/checkout@v3
       - uses: psf/black@stable
@@ -36,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     
     container:
-      image: danistomi/antlr4
+      image: alvarofpp/antlr4
       
     steps:
     - uses: actions/checkout@v3
