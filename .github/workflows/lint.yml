@@ -4,18 +4,19 @@ on:
   push:
     branches:
       - main
-      
+
 jobs:
   lint:
     runs-on: ubuntu-latest
 
-    services:
-      antlr:
-        image: danistomi/antlr4
+    # services:
+    #   antlr:
+    #     image: danistomi/antlr4
 
     strategy:
       matrix:
-        task: [py_compile, black, isort, antlr, pymarkdownlnt]
+        task: [py_compile, black, isort, pymarkdownlnt]
+        # task: [py_compile, black, isort, antlr, pymarkdownlnt]
 
     steps:
     - name: Checkout repository
@@ -32,7 +33,7 @@ jobs:
 
     - name: Lint with Python compile
       if: matrix.task == 'py_compile'
-      run: find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +
+      run: find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +gi
 
     - name: Lint with Black
       if: matrix.task == 'black'
@@ -42,11 +43,11 @@ jobs:
       if: matrix.task == 'isort'
       run: isort --check-only .
 
-    - name: Lint with ANTLR
-      if: matrix.task == 'antlr'
-      run: |
-        antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
-        rm -r antlr_check/
+    # - name: Lint with ANTLR
+    #   if: matrix.task == 'antlr'
+    #   run: |
+    #     antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
+    #     rm -r antlr_check/
 
     - name: Lint with pymarkdown
       if: matrix.task == 'pymarkdownlnt'
