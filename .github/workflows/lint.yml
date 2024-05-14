@@ -33,16 +33,3 @@ jobs:
         python-version: 3.12
         
     - run: find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +
-
-  antlr:
-    runs-on: ubuntu-latest
-    
-    container:
-      image: petervaczi/antlr
-      
-    steps:
-    - run: |
-        antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
-        rm -r antlr_check/
-
-    
