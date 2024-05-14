@@ -18,13 +18,15 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.12
-
-      - name: Install dependencies
+      - name: Setup venv
         run: |
           python -V
           pip install virtualenv
           virtualenv venv
           source venv/bin/activate
+      
+      - name: Install dependencies
+        run: |
           pip install -r requirements-mkdocs-build.txt
           pip install -r requirements.txt
 
