@@ -31,6 +31,10 @@ jobs:
       run: |
         pip install black isort pymarkdownlnt
 
+    - name: Check find
+      run: |
+        find --help
+
     - name: Lint with Python compile
       if: matrix.task == 'py_compile'
       run: find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +gi
