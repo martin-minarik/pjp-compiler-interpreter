@@ -6,53 +6,42 @@ on:
       - main
 
 jobs:
-  lint:
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: psf/black@stable
+        with:
+          options: "--check --verbose"
+          use_pyproject: true
+
+  isort:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: isort/isort-action@v1
+      
+  py_compile:
     runs-on: ubuntu-latest
 
-    # services:
-    #   antlr:
-    #     image: danistomi/antlr4
-
-    strategy:
-      matrix:
-        task: [py_compile, black, isort, pymarkdownlnt]
-        # task: [py_compile, black, isort, antlr, pymarkdownlnt]
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
       with:
         python-version: 3.12
+        
+    - run: find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +
 
-    - name: Install dependencies
-      run: |
-        pip install black isort pymarkdownlnt
+  antlr:
+    runs-on: ubuntu-latest
+    
+    container:
+      image: danistomi/antlr4
+      
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
+        rm -r antlr_check/
 
-    - name: Check find
-      run: |
-        find --help
-
-    - name: Lint with Python compile
-      if: matrix.task == 'py_compile'
-      run: find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +gi
-
-    - name: Lint with Black
-      if: matrix.task == 'black'
-      run: black --check .
-
-    - name: Lint with isort
-      if: matrix.task == 'isort'
-      run: isort --check-only .
-
-    # - name: Lint with ANTLR
-    #   if: matrix.task == 'antlr'
-    #   run: |
-    #     antlr4 -o antlr_check -no-listener -no-visitor language/Language.g4
-    #     rm -r antlr_check/
-
-    - name: Lint with pymarkdown
-      if: matrix.task == 'pymarkdownlnt'
-      run: pymarkdown --disable-rules md013 scan docs/
+    
