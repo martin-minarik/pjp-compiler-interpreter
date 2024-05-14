@@ -1,0 +1,79 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+      - run: |
+          pip install black
+          black --check .
+
+  isort:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: isort/isort-action@v1
+      
+  py_compile:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.12
+        
+    - run: find . -name "*.py" -not -path "./venv/*" -exec python -m py_compile {} +
+
+  deploy-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+      - name: Setup venv
+        run: |
+          python -V
+          pip install virtualenv
+          virtualenv venv
+          source venv/bin/activate
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements-mkdocs-build.txt
+          pip install -r requirements.txt
+
+      - name: Build documentation with MkDocs
+        run: mkdocs build
+
+      - name: Run tests and generate coverage report
+        run: |
+          pytest --cov=. --cov-report html:site/htmlcov
+          pytest --html=site/htmlcov/report.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './site'
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
