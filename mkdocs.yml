@@ -1,12 +1,12 @@
-site_name: SSP Final Project docs
+site_name: Compiler-Interpreter
 site_author: Martin Minařík, MIN0139
 
 # Copyright
 copyright: Copyright &copy; 2023
 
 # Repository
-repo_name: SSP Final Project
-repo_url: https://gitlab.com/martin-minarik/ssp-final-project
+repo_name: pjp-compiler-interpreter
+repo_url: https://github.com/martin-minarik/pjp-compiler-interpreter
 
 
 theme:
