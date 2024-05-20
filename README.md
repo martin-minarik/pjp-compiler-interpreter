@@ -3,6 +3,8 @@
 This is PJP course project, focusing on compiler and interpreter development.
 It's based on the [Project's definition](http://behalek.cs.vsb.cz/wiki/index.php/PLC_Project).
 
+- **Pages:** https://martin-minarik.github.io/pjp-compiler-interpreter/
+
 ## Basic description
 
 This project utilizes ANTLR for programming language processing. It focuses on parsing specified language, ensuring
