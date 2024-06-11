@@ -1,7 +1,7 @@
 import sys
 import tempfile
 
-from src.compiler import get_arg_parser, compile_code
+from src.compiler import compile_code, get_arg_parser
 from src.virtual_machine import VirtualMachine
 
 
@@ -19,7 +19,7 @@ def main() -> None:
         # Interpret instructions
         if args.interpret:
             with tempfile.NamedTemporaryFile(
-                    mode="w", delete_on_close=False
+                mode="w", delete_on_close=False
             ) as temp_file:
                 temp_file.write(output_instructions)
                 temp_file.close()

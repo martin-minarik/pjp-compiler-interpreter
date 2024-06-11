@@ -1,5 +1,5 @@
 [tool.black]
-extend-exclude = '/language/'
+extend-exclude = 'src/language/'
 
 [tool.isort]
 skip = ["language", "venv", ".venv"]
