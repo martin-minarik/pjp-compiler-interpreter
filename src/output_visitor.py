@@ -1,9 +1,9 @@
 from antlr4.tree.Tree import TerminalNodeImpl
 
-from language.LanguageParser import LanguageParser, ParserRuleContext
-from language.LanguageVisitor import LanguageVisitor
-from symbol_table import SymbolTable
-from type_enum import Type
+from .language.LanguageParser import LanguageParser, ParserRuleContext
+from .language.LanguageVisitor import LanguageVisitor
+from .symbol_table import SymbolTable
+from .type_enum import Type
 
 
 class OutputVisitor(LanguageVisitor):

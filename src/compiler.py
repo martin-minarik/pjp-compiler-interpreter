@@ -1,17 +1,14 @@
 import argparse
 import os
-import sys
-import tempfile
 from typing import Optional
 
 from antlr4 import *
 
-from errors import Errors
-from language.LanguageLexer import LanguageLexer
-from language.LanguageParser import LanguageParser
-from output_visitor import OutputVisitor
-from typecheck_visitor import TypeCheckingVisitor
-from virtual_machine import VirtualMachine
+from .errors import Errors
+from .language.LanguageLexer import LanguageLexer
+from .language.LanguageParser import LanguageParser
+from .output_visitor import OutputVisitor
+from .typecheck_visitor import TypeCheckingVisitor
 
 
 def compile_code(input_filepath: str, verbose=False) -> Optional[str]:
@@ -64,32 +61,3 @@ def get_arg_parser():
     arg_parser.add_argument("-i", "--interpret", action="store_true")
 
     return arg_parser
-
-
-def main() -> None:
-    arg_parser = get_arg_parser()
-    args = arg_parser.parse_args()
-
-    output_instructions = compile_code(args.input_file, args.verbose)
-    if output_instructions:  # Compile
-        # Save instructions
-        if args.output_file_flag:
-            with open(args.output_file, "w") as file:
-                file.write(output_instructions)
-
-        # Interpret instructions
-        if args.interpret:
-            with tempfile.NamedTemporaryFile(
-                mode="w", delete_on_close=False
-            ) as temp_file:
-                temp_file.write(output_instructions)
-                temp_file.close()
-
-                print("#" * 15)
-                print("Virtual Machine:")
-                vm = VirtualMachine(temp_file.name)
-                vm.run()
-
-
-if __name__ == "__main__":
-    main()

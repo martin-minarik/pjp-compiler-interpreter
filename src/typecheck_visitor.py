@@ -1,10 +1,10 @@
 from antlr4.tree.Tree import TerminalNodeImpl
 
-from errors import Errors
-from language.LanguageParser import LanguageParser, ParserRuleContext
-from language.LanguageVisitor import LanguageVisitor
-from symbol_table import SymbolTable
-from type_enum import Type
+from .errors import Errors
+from .language.LanguageParser import LanguageParser, ParserRuleContext
+from .language.LanguageVisitor import LanguageVisitor
+from .symbol_table import SymbolTable
+from .type_enum import Type
 
 
 class TypeCheckingVisitor(LanguageVisitor):

@@ -5,7 +5,7 @@ import sys
 from collections import deque
 from typing import Any
 
-from type_enum import Type
+from .type_enum import Type
 
 
 class VirtualMachine:
@@ -215,15 +215,3 @@ def get_arg_parser():
     )
 
     return arg_parser
-
-
-def main():
-    arg_parser = get_arg_parser()
-    args = arg_parser.parse_args()
-
-    vm = VirtualMachine(args.input_file)
-    vm.run()
-
-
-if __name__ == "__main__":
-    main()
