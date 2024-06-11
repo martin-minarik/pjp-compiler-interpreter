@@ -24,7 +24,7 @@ def test_sample1() -> None:
 
     assert check_sample(
         code_filepath=r"samples/PLC_t1.in.txt",
-        reference_filepath=r"samples\PLC_t1.out.txt",
+        reference_filepath=r"samples/PLC_t1.out.txt",
     )
 
 
